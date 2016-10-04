@@ -11,9 +11,9 @@ namespace wk2OOP
         int _studentID;
         string _fName, _sName, _course;
 
-        public Student(){ }
+        public Student(){ }                                                         //allows empty instance
 
-        public Student(int ID, string fName, string sName, string course)
+        public Student(int ID, string fName, string sName, string course)           //assigning values at beginning
         {
             _studentID = ID;
             _fName = fName;
@@ -21,7 +21,7 @@ namespace wk2OOP
             _course = course;
         }
 
-        public int StudentID
+     /*   public int StudentID
         {
             set
             {
@@ -31,8 +31,7 @@ namespace wk2OOP
             {
                 return _studentID;
             }
-        }
-
+        }                                                     //public get and sets just in case.
         public string FirstName
         {
             set
@@ -65,7 +64,7 @@ namespace wk2OOP
             {
                 return _course;
             }
-        }
+        }       */
 
         public void DisplayData()
         {
@@ -77,6 +76,7 @@ namespace wk2OOP
         ~Student()
         {
             Console.WriteLine("Student details, have been removed");
+            Console.ReadLine();
         }
     }
 }
