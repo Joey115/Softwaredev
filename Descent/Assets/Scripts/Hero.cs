@@ -17,6 +17,8 @@ public class Hero
 
     int movement, health, fatigue;
 
+    public Hero() {}
+
     public Hero(int heroClass)
     {
         if (heroClass == 1)
