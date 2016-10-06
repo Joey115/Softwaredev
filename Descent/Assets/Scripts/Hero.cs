@@ -17,46 +17,33 @@ public class Hero
 
     int movement, health, fatigue;
 
-    public Hero() {}
+    public Hero() { }
 
-    public Hero(int heroClass)
+    /* public Hero(int heroClass)
+     {
+         if (heroClass == 1)
+         {
+             Warriorclass();
+         }
+         else if (heroClass == 2)
+         {
+             MageClass();
+         }
+         else if (heroClass == 3)
+         {
+             HealerClass();
+         }
+         else
+         {
+             ScoutClass();
+         }
+     }   */
+
+    public void LeoricSelect(bool _isRune)
     {
-        if (heroClass == 1)
-        {
-            Warriorclass();
-        }
-        else if (heroClass == 2)
-        {
-            MageClass();
-        }
-        else if (heroClass == 3)
-        {
-            HealerClass();
-        }
-        else
-        {
-            ScoutClass();
-        }
+        Leoric leoricHero = new Leoric(_isRune);
     }
 
-    void Warriorclass()
-    {
 
-    }
-
-    void MageClass()
-    {
-        Leoric mage = new Leoric();
-    }
-
-    void HealerClass()
-    {
-
-    }
-
-    void ScoutClass()
-    {
-
-    }
 
 }
