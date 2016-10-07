@@ -48,12 +48,12 @@ public class setup
 
     void MageSelect()
     {
-        bool isLeoric, isRune;
+        bool isLeoric = true, isRune = true;                //preset for now
         //display the 2 mage characters
         //choose a character isLeoric = option;
         //choose a subclass isRune = option;
 
-       if (isLeoric == true)
+        if (isLeoric == true)
         {
             Players.LeoricSelect(isRune);
         }
