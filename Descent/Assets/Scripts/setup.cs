@@ -57,6 +57,10 @@ public class setup
         {
             Players.LeoricSelect(isRune);
         }
+        else
+        {
+            Players.WidowSelect(isRune);
+        }
     }
 
     void ScoutSelect()

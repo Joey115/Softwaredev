@@ -15,7 +15,7 @@ public class Hero
 
     //general stats variable if we can do inheritance + taken damage or fatigue functions
 
-    public int movement, health, fatigue;                       //standard hero attritbutes
+    protected int movement, health, fatigue;                       //standard hero attritbutes
 
     public Hero() { }
 
@@ -57,6 +57,11 @@ public class Hero
     public void LeoricSelect(bool _isRune)                  //Leoric champion selected + subclass selection added
     {
         Leoric leoricHero = new Leoric(_isRune);
+    }
+
+    public void WidowSelect(bool _isRune)
+    {
+        Widow widowHero = new Widow(_isRune);
     }
 
 

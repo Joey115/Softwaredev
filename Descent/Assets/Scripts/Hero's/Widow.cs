@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Leoric : Mage
+public class Widow : Mage
 {
-
-    public Leoric(bool isRune)
+    public Widow(bool isRune)
     {
-        health = 8;
+        health = 10;
         movement = 4;
-        fatigue = 5;
+        fatigue = 4;
 
         if (isRune == true)
         {
@@ -26,5 +25,4 @@ public class Leoric : Mage
     {
 
     }
-
 }
