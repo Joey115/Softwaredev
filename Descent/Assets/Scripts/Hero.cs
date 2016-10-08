@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Hero
+public class Hero : Actions
 {
 
     /*
@@ -39,10 +39,6 @@ public class Hero
          }
      }   */
 
-    public void Attack()
-    {
-
-    }
 
     public void Fatigued()                                     //taken fatigue point
     {
