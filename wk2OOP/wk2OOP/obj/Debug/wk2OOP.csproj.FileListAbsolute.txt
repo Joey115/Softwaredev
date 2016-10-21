@@ -1,0 +1,6 @@
+C:\Users\Jordan\Documents\GitHub\softwaredev\wk2OOP\wk2OOP\bin\Debug\wk2OOP.exe.config
+C:\Users\Jordan\Documents\GitHub\softwaredev\wk2OOP\wk2OOP\obj\Debug\wk2OOP.csprojResolveAssemblyReference.cache
+C:\Users\Jordan\Documents\GitHub\softwaredev\wk2OOP\wk2OOP\bin\Debug\wk2OOP.exe
+C:\Users\Jordan\Documents\GitHub\softwaredev\wk2OOP\wk2OOP\bin\Debug\wk2OOP.pdb
+C:\Users\Jordan\Documents\GitHub\softwaredev\wk2OOP\wk2OOP\obj\Debug\wk2OOP.exe
+C:\Users\Jordan\Documents\GitHub\softwaredev\wk2OOP\wk2OOP\obj\Debug\wk2OOP.pdb
