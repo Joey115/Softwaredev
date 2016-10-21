@@ -3,9 +3,24 @@ using System.Collections;
 
 public class Actions
 {
+    Dice theDie = new Dice();
+
     protected void Attack()
     {
+        bool didHit, surge;
+        int range, damage;
+        didHit = theDie.GetHit();
 
+        if(didHit == true)
+        {
+            //do the rest 
+            range = theDie.GetRange();
+            surge = theDie.GetSurge();
+            damage = theDie.GetDamage();
+        }else
+        {
+            //you missed failure
+        }
     }
 
     protected void Move()
