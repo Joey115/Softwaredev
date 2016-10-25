@@ -59,7 +59,4 @@ public class Hero : Actions
     {
         Widow widowHero = new Widow(_isRune);
     }
-
-
-
 }
