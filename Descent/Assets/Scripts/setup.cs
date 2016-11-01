@@ -9,7 +9,6 @@ public class setup : MonoBehaviour
     //have a set of states for settting up, inc menu states. class, character and sub class select screen
     //could have add players until finished. with note to allow for the OVERLORD
 
-    int noOfPlayers;
     bool option, champ;
     public Button[] heroBut = new Button[4];
     bool[] available = new bool[4]; 
@@ -45,6 +44,7 @@ public class setup : MonoBehaviour
         {
             if (available[i] == false)
             {
+                Debug.Log(i);
                 heroBut[i].interactable = true;
             }
         }
@@ -67,6 +67,7 @@ public class setup : MonoBehaviour
 
     public void HealerSelect()
     {
+        Debug.Log("Healer Selected");
         available[1] = true;
         if (champ == true)
         {
@@ -80,6 +81,7 @@ public class setup : MonoBehaviour
 
     public void MageSelect()
     {
+        Debug.Log("Mage Selected");
         available[2] = true;
         if (champ == true)
         {
