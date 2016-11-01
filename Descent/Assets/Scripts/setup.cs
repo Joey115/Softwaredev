@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 
-public class setup
+public class setup : MonoBehaviour
 {
     //setup ask for no of players, then create the amount of hero's necessary 
     //array of hero's
@@ -9,7 +10,7 @@ public class setup
     //could have add players until finished. with note to allow for the OVERLORD
 
     int noOfPlayers;
-    bool option;
+    bool option, champ;
 
     Hero Players = new Hero();
 
@@ -36,34 +37,43 @@ public class setup
         option = true;
     }
 
-    void WarriorSelect()
+    public void Champ1()
+    {
+        champ = true;
+    }
+
+    public void Champ2()
+    {
+        champ = false;
+    }
+
+    public void WarriorSelect()
     {
 
     }
 
-    void HealerSelect()
+    public void HealerSelect()
     {
 
     }
 
-    void MageSelect()
+    public void MageSelect()
     {
-        bool isLeoric = true, isRune = true;                //preset for now
         //display the 2 mage characters
         //choose a character isLeoric = option;
         //choose a subclass isRune = option;
 
-        if (isLeoric == true)
+        if (champ == true)
         {
-            Players.LeoricSelect(isRune);
+            Players.LeoricSelect(option);
         }
         else
         {
-            Players.WidowSelect(isRune);
+            Players.WidowSelect(option);
         }
     }
 
-    void ScoutSelect()
+    public void ScoutSelect()
     {
 
     }
