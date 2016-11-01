@@ -68,6 +68,14 @@ public class setup : MonoBehaviour
     public void HealerSelect()
     {
         available[1] = true;
+        if (champ == true)
+        {
+            Players.AvricSelect(option);
+        }
+        else
+        {
+            Players.AsharianSelect(option);
+        }
     }
 
     public void MageSelect()

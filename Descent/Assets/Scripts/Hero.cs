@@ -45,9 +45,9 @@ public class Hero : Actions
         fatigue--;
     }
 
-    public void Damaged()                                     //taken damage point
+    public void Damaged(int damage)                                     //taken damage point
     {
-        health--;
+        health -= damage;
     }
 
     public void LeoricSelect(bool _isRune)                  //Leoric champion selected + subclass selection added
@@ -58,5 +58,15 @@ public class Hero : Actions
     public void WidowSelect(bool _isRune)
     {
         Widow widowHero = new Widow(_isRune);
+    }
+
+    public void AsharianSelect(bool _isSeer)
+    {
+        Ashrian ashrianHero = new Ashrian(_isSeer);
+    }
+
+    public void AvricSelect(bool _isSeer)
+    {
+
     }
 }
