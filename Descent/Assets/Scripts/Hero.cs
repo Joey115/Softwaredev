@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Hero : Actions
 {
@@ -17,9 +18,12 @@ public class Hero : Actions
 
     protected int movement, health, fatigue;                       //standard hero attritbutes
 
-    public Hero()
-    {
+    public Hero(){}
 
+    public void FinishSetup()           //get some data to add the heros
+    {
+        List<Hero> Heros = new List<Hero>();
+       // Heros.Add(LeoricHero);
     }
 
     public void Fatigued()                                     //taken fatigue point

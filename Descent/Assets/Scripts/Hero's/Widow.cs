@@ -18,7 +18,7 @@ public class Widow : Hero
 
     void IsRuneMaster()
     {
-
+        //specialist skills and abilities
     }
 
     void IsNecromancer()
