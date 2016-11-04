@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Leoric : Mage
+public class Leoric : Hero
 {
 
     public Leoric(bool isRune)

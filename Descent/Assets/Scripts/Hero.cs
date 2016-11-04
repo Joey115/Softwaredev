@@ -17,28 +17,10 @@ public class Hero : Actions
 
     protected int movement, health, fatigue;                       //standard hero attritbutes
 
-    public Hero() { }
+    public Hero()
+    {
 
-    /* public Hero(int heroClass)
-     {
-         if (heroClass == 1)
-         {
-             Warriorclass();
-         }
-         else if (heroClass == 2)
-         {
-             MageClass();
-         }
-         else if (heroClass == 3)
-         {
-             HealerClass();
-         }
-         else
-         {
-             ScoutClass();
-         }
-     }   */
-
+    }
 
     public void Fatigued()                                     //taken fatigue point
     {

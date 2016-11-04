@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Widow : Mage
+public class Widow : Hero
 {
     public Widow(bool isRune)
     {

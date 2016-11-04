@@ -72,10 +72,6 @@
     <Compile Include="Assets\Scripts\Hero&apos;s\Leoric.cs" />
     <Compile Include="Assets\Scripts\Hero&apos;s\Widow.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
-    <Compile Include="Assets\Scripts\Roles\Healer.cs" />
-    <Compile Include="Assets\Scripts\Roles\Mage.cs" />
-    <Compile Include="Assets\Scripts\Roles\Scout.cs" />
-    <Compile Include="Assets\Scripts\Roles\Warrior.cs" />
     <Compile Include="Assets\Scripts\setup.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
