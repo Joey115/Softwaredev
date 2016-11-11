@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Actions
+public class Actions : MonoBehaviour
 {
     Dice theDie = new Dice();
 

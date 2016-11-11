@@ -12,7 +12,7 @@ public class setup : MonoBehaviour
     bool option, champ;
     public Button[] heroBut = new Button[4];
     bool[] available = new bool[4];
-    Hero Players = new Hero();
+    public Hero Players;
 
     public void OnOption2Select()
     {
