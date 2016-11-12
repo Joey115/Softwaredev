@@ -18,7 +18,19 @@ public class Hero : Actions
 
     protected int movement, health, fatigue;                       //standard hero attritbutes
 
+    enum CharacterState
+    {
+        RefreshState,
+        Actions,
+        notTurn
+    }
+
     public Hero(){}
+
+    void DisplayActions()
+    {
+
+    }
 
     public void FinishSetup()           //get some data to add the heros
     {

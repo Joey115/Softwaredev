@@ -38,7 +38,6 @@ public class setup : MonoBehaviour
             available[i] = false;
         }
     }
-
     void Done()
     {
        // List<Hero> Heros = new List<Hero>();
@@ -69,7 +68,16 @@ public class setup : MonoBehaviour
 
     public void WarriorSelect()
     {
+        Debug.Log("Warrior Selected");
         available[0] = true;
+        if (champ == true)
+        {
+                 //output to database instead
+        }
+        else
+        {
+                //output to database instead
+        }
     }
 
     public void HealerSelect()
@@ -78,11 +86,11 @@ public class setup : MonoBehaviour
         available[1] = true;
         if (champ == true)
         {
-            Players.AvricSelect(option);
+            Players.AvricSelect(option);        //output to database instead
         }
         else
         {
-            Players.AsharianSelect(option);
+            Players.AsharianSelect(option);     //output to database instead
         }
     }
 
@@ -92,16 +100,25 @@ public class setup : MonoBehaviour
         available[2] = true;
         if (champ == true)
         {
-            Players.LeoricSelect(option);
+            Players.LeoricSelect(option);        //output to database instead
         }
         else
         {
-            Players.WidowSelect(option);
+            Players.WidowSelect(option);         //output to database instead
         }
     }
 
     public void ScoutSelect()
     {
+        Debug.Log("Scout Selected");
         available[3] = true;
+        if (champ == true)
+        {
+                                             //output to database instead
+        }
+        else
+        {
+                                            //output to database instead
+        }
     }
 }

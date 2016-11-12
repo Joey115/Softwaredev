@@ -37,12 +37,12 @@ public class Actions : MonoBehaviour
 
     protected void Move()
     {
-
+        //allow movement upto max movements spaces or additional with fatigue
     }
 
     protected void Rest()
     {
-
+        //reset fatigue to 0
     }
 
     protected void Skill()
@@ -52,22 +52,18 @@ public class Actions : MonoBehaviour
 
     protected void Search()
     {
-
+        // gain a random item from the database search items
     }
 
     protected void StandUp()
     {
+        //player can move
 
     }
 
     protected void Revive()
     {
-
-    }
-
-    protected void DoorInteract()
-    {
-
+        //target champion regains health
     }
 
     protected void Special()
