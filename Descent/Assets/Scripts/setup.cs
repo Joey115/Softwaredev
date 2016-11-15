@@ -19,7 +19,7 @@ public class setup : MonoBehaviour
     bool[] available = new bool[4];
     public Hero Players;
     string filePath;
-    int count = 0;
+    int count = 1;
 
     public void OnOption2Select()
     {
