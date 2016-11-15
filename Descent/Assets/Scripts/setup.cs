@@ -17,7 +17,7 @@ public class setup : MonoBehaviour
     bool option, champ;
     public Button[] heroBut = new Button[4];
     bool[] available = new bool[4];
-    public Hero Players;
+   // public Hero Players;
     string filePath;
     int count = 1;
 

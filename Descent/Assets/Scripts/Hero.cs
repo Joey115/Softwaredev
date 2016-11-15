@@ -59,7 +59,7 @@ public class Hero : Actions
 
     void CheckHero(int player)
     {
-     if()
+     if(heroName[player] == "Widow Tahra")
         {
 
         }
