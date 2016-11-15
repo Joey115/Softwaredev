@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Mono.Data.SqliteClient;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data;
 
 public class setup : MonoBehaviour
 {
@@ -13,6 +18,8 @@ public class setup : MonoBehaviour
     public Button[] heroBut = new Button[4];
     bool[] available = new bool[4];
     public Hero Players;
+    string filePath, info;
+    int count = 0;
 
     public void OnOption2Select()
     {
@@ -31,16 +38,14 @@ public class setup : MonoBehaviour
         champ = false;
     }
 
-    void Awake()
+    void Start()
     {
         for (int i = 3; i >= 0; i--)
         {
             available[i] = false;
         }
-    }
-    void Done()
-    {
-       // List<Hero> Heros = new List<Hero>();
+
+        filePath = "URI=file:" + Application.dataPath + "Minions.s3db";
     }
 
 
@@ -66,46 +71,89 @@ public class setup : MonoBehaviour
         }
     }
 
+    void InsertIntoMinionTable(string info)
+    {
+        using (IDbConnection connection = new SqliteConnection(filePath))
+        {
+            connection.Open();
+            IDbCommand command = connection.CreateCommand();
+            command.CommandText = info;
+            command.ExecuteNonQuery();
+            Debug.Log("Inserted a new Hero");
+            count++;
+        }
+    }
+
+
+    //when Count == 4 finish the character select and move onto which encounter is going to start.
+
+
     public void WarriorSelect()
     {
         Debug.Log("Warrior Selected");
         available[0] = true;
         if (champ == true)
         {
-                 //output to database instead
+            // info = "INSERT INTO Hero's Values (" + count.ToString() + ", '" + 
         }
         else
         {
-                //output to database instead
+            //output to database instead
         }
     }
 
     public void HealerSelect()
     {
+        string sub;
         Debug.Log("Healer Selected");
         available[1] = true;
-        if (champ == true)
+        if (option == true)
         {
-            Players.AvricSelect(option);        //output to database instead
+            sub = "SpiritSeer";
         }
         else
         {
-            Players.AsharianSelect(option);     //output to database instead
+            sub = "";
         }
+        if (champ == true)
+        {
+            //      Players.AvricSelect(option);        //output to database instead
+            info = "INSERT INTO Hero's Values (" + count.ToString() + " ', ' Avric ', ' Mage ', ' " + sub;
+        }
+        else
+        {
+            //Players.AsharianSelect(option);     //output to database instead
+            info = "INSERT INTO Hero's Values (" + count.ToString() + " ', ' Asharian ', ' Mage ', ' " + sub;
+        }
+        InsertIntoMinionTable(info);
     }
 
     public void MageSelect()
     {
+        string sub;
         Debug.Log("Mage Selected");
         available[2] = true;
-        if (champ == true)
+
+        if (option == true)
         {
-            Players.LeoricSelect(option);        //output to database instead
+            sub = "Runemaster";
         }
         else
         {
-            Players.WidowSelect(option);         //output to database instead
+            sub = "Necromancer";
         }
+
+        if (champ == true)
+        {
+            //Players.LeoricSelect(option);        //output to database instead
+            info = "INSERT INTO Hero's Values (" + count.ToString() + " ', ' Leoric ', ' Mage ', ' " + sub;
+        }
+        else
+        {
+            // Players.WidowSelect(option);         //output to database instead
+            info = "INSERT INTO Hero's Values (" + count.ToString() + " ', ' Widow ', ' Mage ', ' " + sub;
+        }
+        InsertIntoMinionTable(info);
     }
 
     public void ScoutSelect()
@@ -114,11 +162,11 @@ public class setup : MonoBehaviour
         available[3] = true;
         if (champ == true)
         {
-                                             //output to database instead
+            //output to database instead
         }
         else
         {
-                                            //output to database instead
+            //output to database instead
         }
     }
 }

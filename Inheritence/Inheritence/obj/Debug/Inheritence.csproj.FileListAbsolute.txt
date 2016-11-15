@@ -1,0 +1,6 @@
+C:\Users\Jordan\Documents\GitHub\softwaredev\Inheritence\Inheritence\bin\Debug\Inheritence.exe.config
+C:\Users\Jordan\Documents\GitHub\softwaredev\Inheritence\Inheritence\obj\Debug\Inheritence.csprojResolveAssemblyReference.cache
+C:\Users\Jordan\Documents\GitHub\softwaredev\Inheritence\Inheritence\bin\Debug\Inheritence.exe
+C:\Users\Jordan\Documents\GitHub\softwaredev\Inheritence\Inheritence\bin\Debug\Inheritence.pdb
+C:\Users\Jordan\Documents\GitHub\softwaredev\Inheritence\Inheritence\obj\Debug\Inheritence.exe
+C:\Users\Jordan\Documents\GitHub\softwaredev\Inheritence\Inheritence\obj\Debug\Inheritence.pdb
