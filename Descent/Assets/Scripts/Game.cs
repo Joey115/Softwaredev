@@ -7,9 +7,9 @@ public class Game : MonoBehaviour
     GameState currentGameState;
     public Text nameText, healthText, fatigueText, movementText;
     public Hero[] players = new Hero[4];
+    bool updated = true;
 
     int playerTurnNo = 0;
-
 
     public enum GameState
     {
@@ -26,25 +26,30 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-
-        if (currentGameState == GameState.playerTurn)
+        if (currentGameState == GameState.playerTurn && updated == true)
         {
-            if (playerTurnNo < 3)
-            {
-                PlayerTurn();
-
-            }
-            else
-            {
-                playerTurnNo = 1;
-                currentGameState = GameState.overlordTurn;
-            }
+            PlayerTurn();
+            updated = false;
         }
+    }
+
+    public void EndTurn()
+    {
+        if (playerTurnNo >= 3)
+        {
+            //playerTurnNo = 0;
+            currentGameState = GameState.overlordTurn;
+        }
+        else
+        {
+            playerTurnNo++;
+        }
+        updated = true;
     }
 
     void PlayerTurn()
     {
-        UpdateUI();
+        UpdateUIPlayer();
         //refreshCards();
         //AllowActions();
     }
@@ -54,10 +59,10 @@ public class Game : MonoBehaviour
         currentGameState = GameState.playerTurn;
     }
 
-    void UpdateUI()
+    void UpdateUIPlayer()
     {
         int health, maxHealth, movement, fatigue, maxFatigue;
-        nameText.text = "Player " + (playerTurnNo + 1) + ": " + players[playerTurnNo].GetName();
+        nameText.text = "Player " + (playerTurnNo + 1) + ": \n" + players[playerTurnNo].GetName();
 
         health = players[playerTurnNo].GetHealth();
         maxHealth = players[playerTurnNo].GetMaxHealth();
@@ -66,10 +71,10 @@ public class Game : MonoBehaviour
         maxFatigue = players[playerTurnNo].GetMaxFatigue();
 
         healthText.text = health + " / " + maxHealth;
+        movementText.text = movement + " / " + movement;
+        fatigueText.text = fatigue + " / " + maxFatigue;
 
-
-
-
+        Debug.Log("UI updated");
         //playerTurnNo++;
     }
 }

@@ -78,24 +78,29 @@ public class setup : MonoBehaviour
 
     public void ConfirmClick()
     {
-        bool complete = true;
-        for (int i = 0; i <= 3; i++)
+        if (count == 4)
         {
-            if (available[i] == false)
+            for (int i = 0; i <= 3; i++)
             {
-                Debug.Log(i);
-                heroBut[i].interactable = true;
-                complete = false;
+                heroBut[i].interactable = false;
             }
-        }
-        if (complete == true)
-        {
             //change scene
         }
+        else
+        {
+            for (int i = 0; i <= 3; i++)
+            {
+                if (available[i] == false)
+                {
+                    heroBut[i].interactable = true;
+                }
+            }
+        }
     }
+
     public void SelectedHero()
     {
-        for (int i = 3; i >= 0; i--)
+        for (int i = 0; i <= 3; i++)
         {
             if (available[i] == false)
             {
@@ -118,14 +123,12 @@ public class setup : MonoBehaviour
     }
 
 
-    //when Count == 4 finish the character select and move onto which encounter is going to start.
-
-
     public void WarriorSelect()
     {
         string sub, info;
         Debug.Log("Warrior Selected");
         available[0] = true;
+        Debug.Log("removed warrior");
         if (option == true)
         {
             sub = " Beserker";
@@ -137,20 +140,22 @@ public class setup : MonoBehaviour
 
         if (champ == true)
         {
-            info = "INSERT INTO Heros VALUES ('" + count.ToString() + " ', ' Grisban the thirsty', ' Warrior ', ' " + sub + "');";
+            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "', 'Grisban the thirsty', 'Warrior', ' " + sub + "');";
+            Debug.Log("griban inserted");
         }
         else
         {
-            info = "INSERT INTO Heros VALUES ('" + count.ToString() + " ', ' Syndrael', ' Warrior ', ' " + sub + "');";
+            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "', 'Syndrael', 'Warrior', '" + sub + "');";
+            Debug.Log("Syndrael added");
         }
         InsertIntoMinionTable(info);
     }
-
     public void HealerSelect()
     {
         string sub, info;
         Debug.Log("Healer Selected");
         available[1] = true;
+        Debug.Log("removed Healer");
         if (option == true)
         {
             sub = "SpiritSeaker";
@@ -162,22 +167,23 @@ public class setup : MonoBehaviour
         if (champ == true)
         {
             //      Players.AvricSelect(option);        //output to database instead
-            info = "INSERT INTO Heros VALUES ('" + count.ToString() + " ', ' Avric Albright', ' Healer ', ' " + sub + "');";
+            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "', 'Avric Albright', 'Healer ', '" + sub + "');";
+            Debug.Log("Avric Added");
         }
         else
         {
             //Players.AsharianSelect(option);     //output to database instead
-            info = "INSERT INTO Heros VALUES ('" + count.ToString() + " ', ' Asharian ', ' Healer ', ' " + sub + "');";
+            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "', 'Asharian', 'Healer ', '" + sub + "');";
+            Debug.Log("Asharian Added");
         }
         InsertIntoMinionTable(info);
     }
-
     public void MageSelect()
     {
         string sub, info;
         Debug.Log("Mage Selected");
         available[2] = true;
-
+        Debug.Log("removed Mage");
         if (option == true)
         {
             sub = "Runemaster";
@@ -190,20 +196,22 @@ public class setup : MonoBehaviour
         if (champ == true)
         {
             //Players.LeoricSelect(option);        //output to database instead
-            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "' ,  'Leoric of the Book' ,  'Mage' ,  '" + sub + "');";
+            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "','Leoric of the Book', 'Mage','" + sub + "');";
+            Debug.Log("Leoric Added");
         }
         else
         {
             // Players.WidowSelect(option);         //output to database instead
-            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "' ,  'Widow Tahra' , 'Mage' ,  '" + sub + "');";
+            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "','Widow Tahra','Mage','" + sub + "');";
+            Debug.Log("Widow Added");
         }
         InsertIntoMinionTable(info);
     }
-
     public void ScoutSelect()
     {
         string sub, info;
         Debug.Log("Scout Selected");
+        Debug.Log("removed Scout");
         available[3] = true;
         if (option == true)
         {
@@ -215,11 +223,13 @@ public class setup : MonoBehaviour
         }
         if (champ == true)
         {
-            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "' , ' Tomble Burrowelll ', ' Scount ', ' " + sub + "');";
+            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "','Tomble Burrowelll','Scout','" + sub + "');";
+            Debug.Log("Tomble Added");
         }
         else
         {
-            info = "INSERT INTO Heros VALUES ('" + count.ToString() + " ', ' Jain Fairwood ', ' Scout ', ' " + sub + "');";
+            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "','Jain Fairwood','Scout','" + sub + "');";
+            Debug.Log("Jain Added");
         }
         InsertIntoMinionTable(info);
     }

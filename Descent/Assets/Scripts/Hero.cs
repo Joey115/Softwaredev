@@ -44,7 +44,7 @@ public class Hero : Actions
     }
     public string GetName()
     {
-        return heroName;
+        return totalHeroNames[playerNumber];
     }
 
     enum CharacterState
@@ -62,7 +62,7 @@ public class Hero : Actions
         using (IDbConnection connection = new SqliteConnection(filePath))
         {
             connection.Open();
-            string commandText = "SELECT * FROM Heros WHERE ID='" + playerNumber + "' ";
+            string commandText = "SELECT * FROM Heros WHERE Name='" + totalHeroNames[playerNumber] + "' ";
             IDbCommand command = connection.CreateCommand();
             command.CommandText = commandText;
             IDataReader reader = command.ExecuteReader();
@@ -71,6 +71,12 @@ public class Hero : Actions
                 heroName = Convert.ToString(reader.GetValue(1));
                 heroClass = Convert.ToString(reader.GetValue(2));
                 heroSub = Convert.ToString(reader.GetValue(3));
+                Debug.Log(heroName + " " + heroClass + " " + heroSub);
+            }
+
+            if (heroName != totalHeroNames[playerNumber])
+            {
+                Debug.Log("Player" + playerNumber + " is not equal to reference");
             }
         }
     }
@@ -97,7 +103,7 @@ public class Hero : Actions
             }
         }
         health = maxHealth;
-        fatigue = maxFatigue;
+        fatigue = 0;
 
         if (game != null)
         {
@@ -121,7 +127,6 @@ public class Hero : Actions
             while (reader.Read())
             {
                 totalHeroNames[i] = Convert.ToString(reader.GetValue(0));
-                Debug.Log(totalHeroNames[i]);
                 i++;
             }
         }
