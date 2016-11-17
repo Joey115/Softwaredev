@@ -17,7 +17,7 @@ public class setup : MonoBehaviour
     bool option, champ;
     public Button[] heroBut = new Button[4];
     bool[] available = new bool[4];
-   // public Hero Players;
+    // public Hero Players;
     string filePath;
     int count = 1;
 
@@ -65,7 +65,7 @@ public class setup : MonoBehaviour
 
     void Start()
     {
-        for (int i = 3; i >= 0; i--)
+        for (int i = 0; i <= 3; i++)
         {
             available[i] = false;
         }
@@ -78,13 +78,19 @@ public class setup : MonoBehaviour
 
     public void ConfirmClick()
     {
-        for (int i = 3; i >= 0; i--)
+        bool complete = true;
+        for (int i = 0; i <= 3; i++)
         {
             if (available[i] == false)
             {
                 Debug.Log(i);
                 heroBut[i].interactable = true;
+                complete = false;
             }
+        }
+        if (complete == true)
+        {
+            //change scene
         }
     }
     public void SelectedHero()

@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Game : MonoBehaviour
 {
-    private GameState currentGameState;
-    int playerTurn = 1;
+    GameState currentGameState;
+    public Text nameText, healthText, fatigueText, movementText;
+    public Hero[] players = new Hero[4];
+
+    int playerTurnNo = 0;
+
 
     public enum GameState
     {
         preGame,
-        player1Turn,
-        player2Turn,
-        player3Turn,
-        player4Turn,
+        playerTurn,
         overlordTurn,
         endgame
     }
@@ -24,22 +26,50 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-        if (currentGameState == GameState.player1Turn)
+
+        if (currentGameState == GameState.playerTurn)
         {
-            if (playerTurn < 3)
+            if (playerTurnNo < 3)
             {
-                playerTurn++;
+                PlayerTurn();
+
             }
             else
             {
-                playerTurn = 1;
+                playerTurnNo = 1;
                 currentGameState = GameState.overlordTurn;
             }
         }
     }
 
-    void PlayerTurn(int player)
+    void PlayerTurn()
     {
+        UpdateUI();
+        //refreshCards();
+        //AllowActions();
+    }
 
+    public void SetupComplete()
+    {
+        currentGameState = GameState.playerTurn;
+    }
+
+    void UpdateUI()
+    {
+        int health, maxHealth, movement, fatigue, maxFatigue;
+        nameText.text = "Player " + (playerTurnNo + 1) + ": " + players[playerTurnNo].GetName();
+
+        health = players[playerTurnNo].GetHealth();
+        maxHealth = players[playerTurnNo].GetMaxHealth();
+        movement = players[playerTurnNo].GetMovement();
+        fatigue = players[playerTurnNo].GetFatigue();
+        maxFatigue = players[playerTurnNo].GetMaxFatigue();
+
+        healthText.text = health + " / " + maxHealth;
+
+
+
+
+        //playerTurnNo++;
     }
 }
