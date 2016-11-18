@@ -31,6 +31,10 @@ public class Game : MonoBehaviour
             PlayerTurn();
             updated = false;
         }
+        if(currentGameState == GameState.overlordTurn)
+        {
+
+        }
     }
 
     public void EndTurn()
@@ -75,6 +79,5 @@ public class Game : MonoBehaviour
         fatigueText.text = fatigue + " / " + maxFatigue;
 
         Debug.Log("UI updated");
-        //playerTurnNo++;
     }
 }

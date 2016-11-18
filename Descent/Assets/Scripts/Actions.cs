@@ -28,16 +28,12 @@ public class Actions : MonoBehaviour
                 //damage blocked
             }
         }
-        else
-        {
-            //you fail
-        }
-
     }
 
     protected void Move()
     {
         //allow movement upto max movements spaces or additional with fatigue
+
     }
 
     protected void Rest()

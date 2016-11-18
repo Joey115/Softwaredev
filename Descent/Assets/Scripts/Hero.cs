@@ -18,9 +18,10 @@ public class Hero : Actions
     //general stats variable if we can do inheritance + taken damage or fatigue functions
 
     protected int health, maxHealth, movement, fatigue, maxFatigue, might, knowledge, willpower, awareness; //standard hero attritbutes
-    string filePath;
     int playerNumber;
     public Game game = new Game();
+    string heroName, heroClass, heroSub, filePath;
+    string[] totalHeroNames = new string[8];
 
     public int GetHealth()
     {
@@ -44,7 +45,7 @@ public class Hero : Actions
     }
     public string GetName()
     {
-        return totalHeroNames[playerNumber];
+        return totalHeroNames[playerNumber];  //heroName;
     }
 
     enum CharacterState
@@ -53,9 +54,6 @@ public class Hero : Actions
         Actions,
         notTurn
     }
-
-    string heroName, heroClass, heroSub;
-    string[] totalHeroNames = new string[8];
 
     public void GetHero()
     {
@@ -79,8 +77,26 @@ public class Hero : Actions
                 Debug.Log("Player" + playerNumber + " is not equal to reference");
             }
         }
+        AttachHero();
     }
-
+    void GetHeroNames()
+    {
+        Debug.Log("Getting heros names");
+        int i = 7;
+        using (IDbConnection connection = new SqliteConnection(filePath))
+        {
+            connection.Open();
+            string commandText = "SELECT Name FROM HeroPresets";
+            IDbCommand command = connection.CreateCommand();
+            command.CommandText = commandText;
+            IDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                totalHeroNames[i] = Convert.ToString(reader.GetValue(0));
+                i--;
+            }
+        }
+    }
     void AttachHero()
     {
         Debug.Log("Attaching Hero" + playerNumber);
@@ -111,26 +127,6 @@ public class Hero : Actions
             Debug.Log("Setup is complete");
             game.SetupComplete();
         }
-    }
-
-    void GetHeroNames()
-    {
-        Debug.Log("Getting heros names");
-        int i = 0;
-        using (IDbConnection connection = new SqliteConnection(filePath))
-        {
-            connection.Open();
-            string commandText = "SELECT Name FROM HeroPresets";
-            IDbCommand command = connection.CreateCommand();
-            command.CommandText = commandText;
-            IDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                totalHeroNames[i] = Convert.ToString(reader.GetValue(0));
-                i++;
-            }
-        }
-        AttachHero();
     }
 
     public void Start()
