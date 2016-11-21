@@ -7,7 +7,9 @@ public class Game : MonoBehaviour
     GameState currentGameState;
     public Text nameText, healthText, fatigueText, movementText;
     public Hero[] players = new Hero[4];
+   // public Shader icon;
     bool updated = true;
+
 
     int playerTurnNo = 0;
 
@@ -22,6 +24,10 @@ public class Game : MonoBehaviour
     void Start()
     {
         currentGameState = GameState.preGame;
+
+        //set list of icons
+       // icon[0] = GetComponentInChildren<Shader>();
+
     }
 
     void Update()
@@ -31,7 +37,7 @@ public class Game : MonoBehaviour
             PlayerTurn();
             updated = false;
         }
-        if(currentGameState == GameState.overlordTurn)
+        if (currentGameState == GameState.overlordTurn)
         {
 
         }

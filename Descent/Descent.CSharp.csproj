@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Dice.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
+    <Compile Include="Assets\Scripts\LoadHero.cs" />
     <Compile Include="Assets\Scripts\OverLords\GoblinArchers.cs" />
     <Compile Include="Assets\Scripts\OverLords\Minion.cs" />
     <Compile Include="Assets\Scripts\setup.cs" />
