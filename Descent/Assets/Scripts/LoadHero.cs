@@ -4,21 +4,23 @@ using Mono.Data.SqliteClient;
 using System.Data;
 using System;
 
-public class LoadHero
+public class LoadHero : MonoBehaviour
 {
     string filePath;
     string[] totalHeroNames = new string[4];
     string[] totalHeroClass = new string[4];
     string[] totalHeroSubClass = new string[4];
+    int[] maxHealth = new int[4], movement = new int[4], maxFatigue = new int[4], might = new int[4],
+        knowledge = new int[4], willpower = new int[4], awareness = new int[4];
 
-    void Start()
+    void Awake()
     {
         filePath = "URI=file:" + Application.dataPath + "Minions.s3db";
-        GetHeroNames();
+        GetNames();
     }
 
 
-    void GetHeroNames()
+    void GetNames()
     {
         Debug.Log("Getting heros names");
         int i = 3;
@@ -53,12 +55,39 @@ public class LoadHero
         return totalHeroSubClass[playerNumber];
     }
 
+    public int GetMaxHealth(int playerNumber)
+    {
+        return maxHealth[playerNumber];
+    }
+    public int GetMovement(int playerNumber)
+    {
+        return movement[playerNumber];
+    }
+    public int GetMaxFatigue(int playerNumber)
+    {
+        return maxFatigue[playerNumber];
+    }
+    public int GetMight(int playerNumber)
+    {
+        return might[playerNumber];
+    }
+    public int GetKnowledge(int playerNumber)
+    {
+        return knowledge[playerNumber];
+    }
+    public int GetWillpower(int playerNumber)
+    {
+        return willpower[playerNumber];
+    }
+    public int GetAwareness(int playerNumber)
+    {
+        return awareness[playerNumber];
+    }
+
 
     public void AttachHero(int playerNumber)
     {
-        int maxHealth, movement, maxFatigue, might, knowledge, willpower, awareness;
-
-        Debug.Log("Attaching Hero" + playerNumber);
+        Debug.Log("Attaching Hero" + (playerNumber + 1));
         using (IDbConnection connection = new SqliteConnection(filePath))
         {
             connection.Open();
@@ -68,16 +97,14 @@ public class LoadHero
             IDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                maxHealth = Convert.ToInt32(reader.GetValue(1));
-                movement = Convert.ToInt32(reader.GetValue(2));
-                maxFatigue = Convert.ToInt32(reader.GetValue(3));
-                might = Convert.ToInt32(reader.GetValue(4));
-                knowledge = Convert.ToInt32(reader.GetValue(5));
-                willpower = Convert.ToInt32(reader.GetValue(6));
-                awareness = Convert.ToInt32(reader.GetValue(7));
+                maxHealth[playerNumber] = Convert.ToInt32(reader.GetValue(1));
+                movement[playerNumber] = Convert.ToInt32(reader.GetValue(2));
+                maxFatigue[playerNumber] = Convert.ToInt32(reader.GetValue(3));
+                might[playerNumber] = Convert.ToInt32(reader.GetValue(4));
+                knowledge[playerNumber] = Convert.ToInt32(reader.GetValue(5));
+                willpower[playerNumber] = Convert.ToInt32(reader.GetValue(6));
+                awareness[playerNumber] = Convert.ToInt32(reader.GetValue(7));
             }
         }
-
     }
-
 }

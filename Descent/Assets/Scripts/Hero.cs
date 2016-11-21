@@ -16,11 +16,11 @@ public class Hero : Actions
 
     //general stats variable if we can do inheritance + taken damage or fatigue functions
 
-    int health, maxHealth, movement, fatigue=0, maxFatigue, might, knowledge, willpower, awareness; //standard hero attritbutes
+    int health, maxHealth, movement, fatigue = 0, maxFatigue, might, knowledge, willpower, awareness; //standard hero attritbutes
     int playerNumber;
     public Game game = new Game();
     public LoadHero load = new LoadHero();
-    string heroName, heroClass, heroSub;
+    public string heroName, heroClass, heroSub;
 
 
     public int GetHealth()
@@ -56,7 +56,7 @@ public class Hero : Actions
     }
 
 
-    public void Start()
+    void Start()
     {
         switch (this.gameObject.name)
         {
@@ -81,14 +81,36 @@ public class Hero : Actions
                 Debug.Log("Cannot read the player, no Hero Selected Arsehat");
                 break;
         }
+        SetupHeros();
+        health = maxHealth;
+        Debug.Log(heroName);
+    }
 
-        if (game != null)
+    bool check = false;
+    void LateUpdate()
+    {
+        if (game != null && check == false)
         {
             //change state
             Debug.Log("Setup is complete");
             game.SetupComplete();
+            check = true;
         }
-        health = maxHealth;
+    }
+
+    void SetupHeros()
+    {
+        heroName = load.GetHeroName(playerNumber);
+        heroClass = load.GetHeroClass(playerNumber);
+        heroSub = load.GetHeroSubClass(playerNumber);
+        load.AttachHero(playerNumber);
+        maxHealth = load.GetMaxHealth(playerNumber);
+        movement = load.GetMovement(playerNumber);
+        maxFatigue = load.GetMaxFatigue(playerNumber);
+        might = load.GetMight(playerNumber);
+        knowledge = load.GetKnowledge(playerNumber);
+        willpower = load.GetWillpower(playerNumber);
+        awareness = load.GetAwareness(playerNumber);
     }
 
     public void Fatigued()                                     //taken fatigue point
