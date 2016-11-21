@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 70ed46da453f0924e9b14e1984be9de6
-timeCreated: 1479394882
+guid: 1fdf5f77790afab458e7d9a6186993ee
+timeCreated: 1479735488
 licenseType: Free
 PluginImporter:
   serializedVersion: 1
@@ -9,12 +9,15 @@ PluginImporter:
   isPreloaded: 0
   platformData:
     Any:
-      enabled: 1
+      enabled: 0
       settings: {}
     Editor:
       enabled: 0
       settings:
         DefaultValueInitialized: true
+    Xbox360:
+      enabled: 1
+      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

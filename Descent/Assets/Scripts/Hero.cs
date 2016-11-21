@@ -16,7 +16,7 @@ public class Hero : Actions
 
     //general stats variable if we can do inheritance + taken damage or fatigue functions
 
-    int health, maxHealth, movement, fatigue, maxFatigue, might, knowledge, willpower, awareness; //standard hero attritbutes
+    int health, maxHealth, movement, fatigue=0, maxFatigue, might, knowledge, willpower, awareness; //standard hero attritbutes
     int playerNumber;
     public Game game = new Game();
     public LoadHero load = new LoadHero();
@@ -82,7 +82,13 @@ public class Hero : Actions
                 break;
         }
 
-
+        if (game != null)
+        {
+            //change state
+            Debug.Log("Setup is complete");
+            game.SetupComplete();
+        }
+        health = maxHealth;
     }
 
     public void Fatigued()                                     //taken fatigue point

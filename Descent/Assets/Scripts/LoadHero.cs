@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Mono.Data.SqliteClient;
+using System.Data;
+using System;
 
-
-public class LoadHero : MonoBehaviour
+public class LoadHero
 {
     string filePath;
     string[] totalHeroNames = new string[4];
@@ -53,9 +54,9 @@ public class LoadHero : MonoBehaviour
     }
 
 
-    void AttachHero()
+    public void AttachHero(int playerNumber)
     {
-        int health, maxHealth, movement, fatigue, maxFatigue, might, knowledge, willpower, awareness;
+        int maxHealth, movement, maxFatigue, might, knowledge, willpower, awareness;
 
         Debug.Log("Attaching Hero" + playerNumber);
         using (IDbConnection connection = new SqliteConnection(filePath))
@@ -76,15 +77,7 @@ public class LoadHero : MonoBehaviour
                 awareness = Convert.ToInt32(reader.GetValue(7));
             }
         }
-        health = maxHealth;
-        fatigue = 0;
 
-        if (game != null)
-        {
-            //change state
-            Debug.Log("Setup is complete");
-            game.SetupComplete();
-        }
     }
 
 }
