@@ -122,13 +122,12 @@ public class setup : MonoBehaviour
         }
     }
 
-
     public void WarriorSelect()
     {
         string sub, info;
         Debug.Log("Warrior Selected");
         available[0] = true;
-        Debug.Log("removed warrior");
+        //Debug.Log("removed warrior");
         if (option == true)
         {
             sub = " Beserker";
@@ -155,7 +154,7 @@ public class setup : MonoBehaviour
         string sub, info;
         Debug.Log("Healer Selected");
         available[1] = true;
-        Debug.Log("removed Healer");
+       // Debug.Log("removed Healer");
         if (option == true)
         {
             sub = "SpiritSeaker";
@@ -183,7 +182,7 @@ public class setup : MonoBehaviour
         string sub, info;
         Debug.Log("Mage Selected");
         available[2] = true;
-        Debug.Log("removed Mage");
+       // Debug.Log("removed Mage");
         if (option == true)
         {
             sub = "Runemaster";
@@ -211,7 +210,7 @@ public class setup : MonoBehaviour
     {
         string sub, info;
         Debug.Log("Scout Selected");
-        Debug.Log("removed Scout");
+       // Debug.Log("removed Scout");
         available[3] = true;
         if (option == true)
         {

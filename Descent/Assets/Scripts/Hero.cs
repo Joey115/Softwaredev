@@ -103,7 +103,6 @@ public class Hero : Actions
         heroName = load.GetHeroName(playerNumber);
         heroClass = load.GetHeroClass(playerNumber);
         heroSub = load.GetHeroSubClass(playerNumber);
-        load.AttachHero(playerNumber);
         maxHealth = load.GetMaxHealth(playerNumber);
         movement = load.GetMovement(playerNumber);
         maxFatigue = load.GetMaxFatigue(playerNumber);

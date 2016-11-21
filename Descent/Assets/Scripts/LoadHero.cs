@@ -39,8 +39,33 @@ public class LoadHero : MonoBehaviour
                 i--;
             }
         }
+        for (int x =3; x>=0; x--)
+        {
+            AttachHero(x);
+        }
     }
-
+    void AttachHero(int x)
+    {
+        //Debug.Log("Attaching Hero" + (playerNumber + 1));
+        using (IDbConnection connection = new SqliteConnection(filePath))
+        {
+            connection.Open();
+            string commandText = "SELECT * FROM HeroPresets WHERE Name='" + totalHeroNames[x] + "' ";
+            IDbCommand command = connection.CreateCommand();
+            command.CommandText = commandText;
+            IDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                maxHealth[x] = Convert.ToInt32(reader.GetValue(1));
+                movement[x] = Convert.ToInt32(reader.GetValue(2));
+                maxFatigue[x] = Convert.ToInt32(reader.GetValue(3));
+                might[x] = Convert.ToInt32(reader.GetValue(4));
+                knowledge[x] = Convert.ToInt32(reader.GetValue(5));
+                willpower[x] = Convert.ToInt32(reader.GetValue(6));
+                awareness[x] = Convert.ToInt32(reader.GetValue(7));
+            }
+        }
+    }
 
     public string GetHeroName(int playerNumber)
     {
@@ -82,29 +107,5 @@ public class LoadHero : MonoBehaviour
     public int GetAwareness(int playerNumber)
     {
         return awareness[playerNumber];
-    }
-
-
-    public void AttachHero(int playerNumber)
-    {
-        Debug.Log("Attaching Hero" + (playerNumber + 1));
-        using (IDbConnection connection = new SqliteConnection(filePath))
-        {
-            connection.Open();
-            string commandText = "SELECT * FROM HeroPresets WHERE Name='" + totalHeroNames[playerNumber] + "' ";
-            IDbCommand command = connection.CreateCommand();
-            command.CommandText = commandText;
-            IDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                maxHealth[playerNumber] = Convert.ToInt32(reader.GetValue(1));
-                movement[playerNumber] = Convert.ToInt32(reader.GetValue(2));
-                maxFatigue[playerNumber] = Convert.ToInt32(reader.GetValue(3));
-                might[playerNumber] = Convert.ToInt32(reader.GetValue(4));
-                knowledge[playerNumber] = Convert.ToInt32(reader.GetValue(5));
-                willpower[playerNumber] = Convert.ToInt32(reader.GetValue(6));
-                awareness[playerNumber] = Convert.ToInt32(reader.GetValue(7));
-            }
-        }
-    }
+    }  
 }

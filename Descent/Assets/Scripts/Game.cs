@@ -84,6 +84,9 @@ public class Game : MonoBehaviour
         movementText.text = movement + " / " + movement;
         fatigueText.text = fatigue + " / " + maxFatigue;
 
+        Debug.Log(health + " " + maxHealth);
+
+
         Debug.Log("UI updated");
     }
 }
