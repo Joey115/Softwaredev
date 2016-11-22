@@ -33,9 +33,9 @@ public class LoadHero : MonoBehaviour
             IDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                totalHeroNames[i] = Convert.ToString(reader.GetValue(0));
-                totalHeroClass[i] = Convert.ToString(reader.GetValue(1));
-                totalHeroSubClass[i] = Convert.ToString(reader.GetValue(2));
+                totalHeroNames[i] = Convert.ToString(reader.GetValue(1));
+                totalHeroClass[i] = Convert.ToString(reader.GetValue(2));
+                totalHeroSubClass[i] = Convert.ToString(reader.GetValue(3));
                 i--;
             }
         }

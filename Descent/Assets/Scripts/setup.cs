@@ -222,7 +222,7 @@ public class setup : MonoBehaviour
         }
         if (champ == true)
         {
-            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "','Tomble Burrowelll','Scout','" + sub + "');";
+            info = "INSERT INTO Heros VALUES ('" + count.ToString() + "','Tomble Burrowell','Scout','" + sub + "');";
             Debug.Log("Tomble Added");
         }
         else
