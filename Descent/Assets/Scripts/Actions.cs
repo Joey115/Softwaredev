@@ -4,8 +4,9 @@ using System.Collections;
 public class Actions : MonoBehaviour
 {
     Dice theDie = new Dice();
+    Vector3 move;
 
-    protected void Attack()
+    public void Attack()
     {
         bool didHit, surge, extra;
         int range, damage, die = 0, defence = 0;
@@ -23,16 +24,29 @@ public class Actions : MonoBehaviour
             //get defence die
 
             damage -= defence;
-            if(damage<=0)
+            if (damage <= 0)
             {
                 //damage blocked
             }
         }
     }
 
-    protected void Move()
+    void Update()
+    {
+
+    }
+
+    public void Move(int moveLimit)
     {
         //allow movement upto max movements spaces or additional with fatigue
+        int tempMove = 0;
+        Debug.Log("Moving " + moveLimit);
+
+        while (tempMove < moveLimit)
+        {
+            move = new Vector3(1.1f, 0, 0);
+            this.gameObject.transform.Translate(move);
+        }
 
     }
 

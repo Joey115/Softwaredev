@@ -7,8 +7,10 @@ public class Game : MonoBehaviour
     GameState currentGameState;
     public Text nameText, healthText, fatigueText, movementText;
     public Hero[] players = new Hero[4];
-   // public Shader icon;
+    // public Shader icon;
     bool updated = true;
+    int actionsLeft = 2;
+    public Dropdown drop;
 
 
     int playerTurnNo = 0;
@@ -24,9 +26,10 @@ public class Game : MonoBehaviour
     void Start()
     {
         currentGameState = GameState.preGame;
+        drop.interactable = false;
 
         //set list of icons
-       // icon[0] = GetComponentInChildren<Shader>();
+        // icon[0] = GetComponentInChildren<Shader>();
 
     }
 
@@ -60,8 +63,8 @@ public class Game : MonoBehaviour
     void PlayerTurn()
     {
         UpdateUIPlayer();
+        drop.interactable = true;
         //refreshCards();
-        //AllowActions();
     }
 
     public void SetupComplete()
@@ -88,5 +91,34 @@ public class Game : MonoBehaviour
 
 
         Debug.Log("UI updated");
+    }
+
+    public void AllowActions(int value)
+    {
+        switch (value)
+        {
+            case 1:
+                players[playerTurnNo].Attack();
+                Debug.Log("Atttcking");
+                break;
+            case 2:
+                int temp = players[playerTurnNo].GetMovement();
+                players[playerTurnNo].Move(temp);
+                break;
+            default:
+                Debug.Log("It's fucked");
+                break;
+        }
+        drop.interactable = false;
+
+        if (actionsLeft == 0)
+        {
+            EndTurn();
+        }
+    }
+
+    public void ACtions()
+    {
+        actionsLeft--;
     }
 }
