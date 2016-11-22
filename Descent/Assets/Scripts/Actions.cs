@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using System;
 using System.Collections;
 
 public class Actions : MonoBehaviour
@@ -38,32 +40,38 @@ public class Actions : MonoBehaviour
         yVal = 1.07f;
     }
 
+    IEnumerator CheckButtonPress()
+    {
+        yield return new WaitForSeconds(3);
+    }
+
     void GetMovement()
     {
-        bool buttonPressed = false;
-
-        while (buttonPressed == false)
+        bool buttonPressed = false;                                                 //initialise the variable
+        //stack overflow
+        while (buttonPressed == false)                                                  //until there is a direction button moved implement
         {
-            Debug.Log("Waiting for button press");
-            if (Input.GetKey("d") || Input.GetKey("e") || Input.GetKey("c"))
+            Debug.Log("Waiting for button press THEN Enter");
+            CheckButtonPress();
+            if (Input.GetKey("d") || Input.GetKey("e") || Input.GetKey("c"))            //see if the character is moving in a certain direction
             {
-                x = xVal;
                 buttonPressed = true;
+                x = xVal;                                                                   //set the variable to the preset distance.                                                                        //set the variable to break the loop
             }
             if (Input.GetKey("w") || Input.GetKey("e") || Input.GetKey("q"))
             {
-                y = yVal;
                 buttonPressed = true;
+                y = yVal;
             }
             if (Input.GetKey("a") || Input.GetKey("q") || Input.GetKey("z"))
             {
-                x = -xVal;
                 buttonPressed = true;
+                x = -xVal;
             }
             if (Input.GetKey("x") || Input.GetKey("c") || Input.GetKey("z"))
             {
-                y = -yVal;
                 buttonPressed = true;
+                y = -yVal;
             }
         }
     }
@@ -71,17 +79,18 @@ public class Actions : MonoBehaviour
     public void Move(int moveLimit)
     {
         //allow movement upto max movements spaces or additional with fatigue
-        int tempMove = 0;
-        Debug.Log("Moving " + moveLimit);
-
-        while (tempMove < moveLimit)
+        int amountMoved = 0;
+        Vector3 temp;
+        // Debug.Log("Moving " + moveLimit);
+        while (amountMoved < moveLimit)                                //while the amount moved is less than the limit implement following
         {
             GetMovement();
-            move = new Vector3(x, y, 0);
-            this.gameObject.transform.Translate(move);
-            x = 0;
+            //Get direction values.
+            temp = new Vector3(x, y, 0);
+            this.gameObject.transform.Translate(temp);                  //move the gameObject that far
+            x = 0;                                                      //reset the movement variables
             y = 0;
-            tempMove++;
+            amountMoved++;                                              //increment the amount moved variable
         }
     }
 

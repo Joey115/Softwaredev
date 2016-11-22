@@ -76,6 +76,12 @@ public class setup : MonoBehaviour
     }
 
 
+    IEnumerator FinishedSetup()
+    {
+        yield return new WaitForSeconds(3);
+        Application.LoadLevel("Encounter_1");
+    }
+
     public void ConfirmClick()
     {
         if (count == 4)
@@ -85,6 +91,7 @@ public class setup : MonoBehaviour
                 heroBut[i].interactable = false;
             }
             //change scene
+            FinishedSetup();
         }
         else
         {

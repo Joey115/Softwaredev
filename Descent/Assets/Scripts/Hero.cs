@@ -113,7 +113,7 @@ public class Hero : Actions
 
     public void Fatigued()                                     //taken fatigue point
     {
-        fatigue--;
+        fatigue++;
     }
     public void Damaged(int damage)                                     //taken damage point
     {
