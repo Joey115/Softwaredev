@@ -58,6 +58,7 @@ public class Game : MonoBehaviour
             playerTurnNo++;
         }
         updated = true;
+        actionsLeft = 2;
     }
 
     void PlayerTurn()
@@ -95,6 +96,8 @@ public class Game : MonoBehaviour
 
     public void AllowActions(int value)
     {
+        int temp = players[playerTurnNo].GetMovement();
+
         switch (value)
         {
             case 1:
@@ -102,18 +105,16 @@ public class Game : MonoBehaviour
                 Debug.Log("Atttcking");
                 break;
             case 2:
-                int temp = players[playerTurnNo].GetMovement();
                 players[playerTurnNo].Move(temp);
                 break;
             default:
                 Debug.Log("It's fucked");
                 break;
         }
-        drop.interactable = false;
-
         if (actionsLeft == 0)
         {
             EndTurn();
+            drop.interactable = false;
         }
     }
 

@@ -55,7 +55,6 @@ public class Hero : Actions
         notTurn
     }
 
-
     void Start()
     {
         switch (this.gameObject.name)

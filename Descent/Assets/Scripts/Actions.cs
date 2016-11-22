@@ -5,6 +5,7 @@ public class Actions : MonoBehaviour
 {
     Dice theDie = new Dice();
     Vector3 move;
+    float x, y, xVal, yVal;
 
     public void Attack()
     {
@@ -31,9 +32,40 @@ public class Actions : MonoBehaviour
         }
     }
 
-    void Update()
+    void Start()
     {
+        xVal = 1.06f;
+        yVal = 1.07f;
+    }
 
+    void GetMovement()
+    {
+        bool buttonPressed = false;
+
+        while (buttonPressed == false)
+        {
+            Debug.Log("Waiting for button press");
+            if (Input.GetKey("d") || Input.GetKey("e") || Input.GetKey("c"))
+            {
+                x = xVal;
+                buttonPressed = true;
+            }
+            if (Input.GetKey("w") || Input.GetKey("e") || Input.GetKey("q"))
+            {
+                y = yVal;
+                buttonPressed = true;
+            }
+            if (Input.GetKey("a") || Input.GetKey("q") || Input.GetKey("z"))
+            {
+                x = -xVal;
+                buttonPressed = true;
+            }
+            if (Input.GetKey("x") || Input.GetKey("c") || Input.GetKey("z"))
+            {
+                y = -yVal;
+                buttonPressed = true;
+            }
+        }
     }
 
     public void Move(int moveLimit)
@@ -44,10 +76,13 @@ public class Actions : MonoBehaviour
 
         while (tempMove < moveLimit)
         {
-            move = new Vector3(1.1f, 0, 0);
+            GetMovement();
+            move = new Vector3(x, y, 0);
             this.gameObject.transform.Translate(move);
+            x = 0;
+            y = 0;
+            tempMove++;
         }
-
     }
 
     protected void Rest()
