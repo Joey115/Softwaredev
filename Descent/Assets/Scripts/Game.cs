@@ -27,6 +27,7 @@ public class Game : MonoBehaviour
     {
         currentGameState = GameState.preGame;
         drop.interactable = false;
+        drop.value = 0;
 
         //set list of icons
         // icon[0] = GetComponentInChildren<Shader>();
@@ -45,7 +46,6 @@ public class Game : MonoBehaviour
 
         }
     }
-
     public void EndTurn()
     {
         if (playerTurnNo >= 3)
@@ -58,6 +58,7 @@ public class Game : MonoBehaviour
             playerTurnNo++;
         }
         updated = true;
+        drop.value = 0;
         actionsLeft = 2;
     }
 
@@ -94,9 +95,10 @@ public class Game : MonoBehaviour
         Debug.Log("UI updated");
     }
 
-    public void AllowActions(int value)
+    void AllowActions()
     {
-        int temp = players[playerTurnNo].GetMovement();
+        int value = drop.value;
+        int moveTemp = players[playerTurnNo].GetMovement();
 
         switch (value)
         {
@@ -105,21 +107,24 @@ public class Game : MonoBehaviour
                 Debug.Log("Atttcking");
                 break;
             case 2:
-                players[playerTurnNo].Move(temp);
+                players[playerTurnNo].Move(moveTemp);
                 break;
             default:
-                Debug.Log("It's fucked");
+                Debug.Log("It's fucked / doing another actions that isnt' defined yet :3 ");
                 break;
         }
-        if (actionsLeft == 0)
+        actionsLeft--;
+        if (actionsLeft <= 0)
         {
-            EndTurn();
             drop.interactable = false;
+            EndTurn();
+
         }
     }
 
-    public void ACtions()
+    public void Actions()
     {
         actionsLeft--;
+        AllowActions();
     }
 }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System;
 using System.Collections;
 
-public class Actions : MonoBehaviour
+public abstract class Actions : MonoBehaviour
 {
+    //make the class an abstract class so that you cannot create an instance of this without it being on a child
     Dice theDie = new Dice();
     Vector3 move;
     float x, y, xVal, yVal;
@@ -36,7 +37,7 @@ public class Actions : MonoBehaviour
 
     void Start()
     {
-        xVal = 1.06f;
+        xVal = 1.06f;                       //distance between squares
         yVal = 1.07f;
     }
 
@@ -51,7 +52,7 @@ public class Actions : MonoBehaviour
         //stack overflow
         while (buttonPressed == false)                                                  //until there is a direction button moved implement
         {
-            Debug.Log("Waiting for button press THEN Enter");
+            Debug.Log("Waiting for button press ");
             CheckButtonPress();
             if (Input.GetKey("d") || Input.GetKey("e") || Input.GetKey("c"))            //see if the character is moving in a certain direction
             {
@@ -120,8 +121,5 @@ public class Actions : MonoBehaviour
         //target champion regains health
     }
 
-    protected void Special()
-    {
-
-    }
+    public abstract void Special(); // this means anything using this script will have to have it's own class version of it.
 }

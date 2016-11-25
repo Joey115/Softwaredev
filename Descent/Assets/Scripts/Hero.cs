@@ -18,8 +18,8 @@ public class Hero : Actions
 
     int health, maxHealth, movement, fatigue = 0, maxFatigue, might, knowledge, willpower, awareness; //standard hero attritbutes
     int playerNumber;
-    public Game game = new Game();
-    public LoadHero load = new LoadHero();
+    public Game game;
+    public LoadHero load;
     public string heroName, heroClass, heroSub;
 
 
@@ -109,6 +109,11 @@ public class Hero : Actions
         knowledge = load.GetKnowledge(playerNumber);
         willpower = load.GetWillpower(playerNumber);
         awareness = load.GetAwareness(playerNumber);
+    }
+
+    public override void Special()
+    {
+        // insert special abilities here.
     }
 
     public void Fatigued()                                     //taken fatigue point
