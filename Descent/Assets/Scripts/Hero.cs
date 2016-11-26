@@ -116,11 +116,16 @@ public class Hero : Actions
         // insert special abilities here.
     }
 
+    public void Rest()
+    {
+        fatigue = 0;
+        Debug.Log("Rested player");
+    }
     public void Fatigued()                                     //taken fatigue point
     {
         fatigue++;
     }
-    public void Damaged(int damage)                                     //taken damage point
+    public override void Damaged(int damage)                                     //taken damage point
     {
         health -= damage;
     }

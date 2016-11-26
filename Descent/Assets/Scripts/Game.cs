@@ -109,6 +109,9 @@ public class Game : MonoBehaviour
             case 2:
                 players[playerTurnNo].Move(moveTemp);
                 break;
+            case 3:
+                players[playerTurnNo].Rest();
+                break;
             default:
                 Debug.Log("It's fucked / doing another actions that isnt' defined yet :3 ");
                 break;

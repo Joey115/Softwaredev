@@ -10,13 +10,16 @@ public abstract class Actions : MonoBehaviour
     Vector3 move;
     float x, y, xVal, yVal;
 
-    public void Attack()
+    public abstract void Damaged(int damage);
+
+    public void Attack()  // send the minion being attacked
     {
         bool didHit, surge, extra;
-        int range, damage, die = 0, defence = 0;
+        int range, damage, die = 0, defence = 0, temp = 0;
         //get dice
         // send 0 for no additional dice, 1 yellow, 2 red
         didHit = theDie.GetHit(die);
+        //temp = Minion.GetDefence();
 
         if (didHit == true)
         {
@@ -26,8 +29,11 @@ public abstract class Actions : MonoBehaviour
             extra = theDie.ExtraSurge();
             damage = theDie.GetDamage();
             //get defence die
+            Debug.Log("Available Range: " + range + "Damage: " + damage + "Surge: " + surge + " " + extra);
 
+            defence = theDie.RollDefenceDie(temp);
             damage -= defence;
+            //minion.damaged();
             if (damage <= 0)
             {
                 //damage blocked
@@ -93,11 +99,6 @@ public abstract class Actions : MonoBehaviour
             y = 0;
             amountMoved++;                                              //increment the amount moved variable
         }
-    }
-
-    protected void Rest()
-    {
-        //reset fatigue to 0
     }
 
     protected void Skill()
