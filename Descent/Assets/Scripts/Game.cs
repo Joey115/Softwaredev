@@ -8,9 +8,11 @@ public class Game : MonoBehaviour
     public Text nameText, healthText, fatigueText, movementText;
     public Hero[] players = new Hero[4];
     // public Shader icon;
-    bool updated = true;
-    int actionsLeft = 2;
+    bool updated = true, action = false;
+    int actionsLeft = 2, moveTemp, moveTaken;
     public Dropdown drop;
+    IEnumerator FLUP;
+
 
 
     int playerTurnNo = 0;
@@ -28,12 +30,10 @@ public class Game : MonoBehaviour
         currentGameState = GameState.preGame;
         drop.interactable = false;
         drop.value = 0;
-
         //set list of icons
         // icon[0] = GetComponentInChildren<Shader>();
 
     }
-
     void Update()
     {
         if (currentGameState == GameState.playerTurn && updated == true)
@@ -44,6 +44,16 @@ public class Game : MonoBehaviour
         if (currentGameState == GameState.overlordTurn)
         {
 
+        }
+        if (action)
+        {
+            while (moveTaken < moveTemp)
+            {
+                players[playerTurnNo].SetActions();
+                moveTaken++;
+            }
+            action = false;
+            moveTaken = 0;
         }
     }
     public void EndTurn()
@@ -82,6 +92,7 @@ public class Game : MonoBehaviour
         health = players[playerTurnNo].GetHealth();
         maxHealth = players[playerTurnNo].GetMaxHealth();
         movement = players[playerTurnNo].GetMovement();
+        moveTemp = movement;
         fatigue = players[playerTurnNo].GetFatigue();
         maxFatigue = players[playerTurnNo].GetMaxFatigue();
 
@@ -98,8 +109,6 @@ public class Game : MonoBehaviour
     void AllowActions()
     {
         int value = drop.value;
-        int moveTemp = players[playerTurnNo].GetMovement();
-
         switch (value)
         {
             case 1:
@@ -107,7 +116,9 @@ public class Game : MonoBehaviour
                 Debug.Log("Atttcking");
                 break;
             case 2:
-                players[playerTurnNo].Move(moveTemp);
+                action = true;
+                Debug.Log("MOVE PLS YOU ARSE");
+                // players[playerTurnNo].Move(moveTemp);
                 break;
             case 3:
                 players[playerTurnNo].Rest();
@@ -116,7 +127,6 @@ public class Game : MonoBehaviour
                 Debug.Log("It's fucked / doing another actions that isnt' defined yet :3 ");
                 break;
         }
-        actionsLeft--;
         if (actionsLeft <= 0)
         {
             drop.interactable = false;

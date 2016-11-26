@@ -8,16 +8,20 @@ public abstract class Actions : MonoBehaviour
     //make the class an abstract class so that you cannot create an instance of this without it being on a child
     Dice theDie = new Dice();
     Vector3 move;
-    float x, y, xVal, yVal;
+    int addionalDie;
+    float xVal, yVal;
+    bool actions = false;
+
 
     public abstract void Damaged(int damage);
 
     public void Attack()  // send the minion being attacked
     {
-        bool didHit, surge, extra;
+        bool didHit, surge, extra;                          // , ranged;
         int range, damage, die = 0, defence = 0, temp = 0;
         //get dice
         // send 0 for no additional dice, 1 yellow, 2 red
+        //die = this.additional
         didHit = theDie.GetHit(die);
         //temp = Minion.GetDefence();
 
@@ -29,7 +33,7 @@ public abstract class Actions : MonoBehaviour
             extra = theDie.ExtraSurge();
             damage = theDie.GetDamage();
             //get defence die
-            Debug.Log("Available Range: " + range + "Damage: " + damage + "Surge: " + surge + " " + extra);
+            Debug.Log("Available Range: " + range + " Damage: " + damage + " Surge: " + surge + " & " + extra);
 
             defence = theDie.RollDefenceDie(temp);
             damage -= defence;
@@ -47,58 +51,69 @@ public abstract class Actions : MonoBehaviour
         yVal = 1.07f;
     }
 
-    IEnumerator CheckButtonPress()
+    public void SetActions()
     {
-        yield return new WaitForSeconds(3);
+        actions = true;
     }
 
-    void GetMovement()
+    void Update()
     {
-        bool buttonPressed = false;                                                 //initialise the variable
-        //stack overflow
-        while (buttonPressed == false)                                                  //until there is a direction button moved implement
+        float temp = GetMovement();
+        if (actions && temp != 0)
         {
-            Debug.Log("Waiting for button press ");
-            CheckButtonPress();
-            if (Input.GetKey("d") || Input.GetKey("e") || Input.GetKey("c"))            //see if the character is moving in a certain direction
-            {
-                buttonPressed = true;
-                x = xVal;                                                                   //set the variable to the preset distance.                                                                        //set the variable to break the loop
-            }
-            if (Input.GetKey("w") || Input.GetKey("e") || Input.GetKey("q"))
-            {
-                buttonPressed = true;
-                y = yVal;
-            }
-            if (Input.GetKey("a") || Input.GetKey("q") || Input.GetKey("z"))
-            {
-                buttonPressed = true;
-                x = -xVal;
-            }
-            if (Input.GetKey("x") || Input.GetKey("c") || Input.GetKey("z"))
-            {
-                buttonPressed = true;
-                y = -yVal;
-            }
+            Move(temp);
+            actions = false;
         }
     }
 
-    public void Move(int moveLimit)
+    float GetMovement()
+    {
+        float x, y, done = 0;
+        //Debug.Log("Waiting for button press ");
+        // CheckButtonPress();
+        if (Input.GetKey("d") || Input.GetKey("e") || Input.GetKey("c"))            //see if the character is moving in a certain direction
+        {
+            x = xVal;                                                                   //set the variable to the preset distance.     
+            done = (x * 10);                                                                           //set the variable to break the loop
+        }
+        if (Input.GetKey("a") || Input.GetKey("q") || Input.GetKey("z"))
+        {
+            x = -xVal;
+            done = (x * 10);
+        }
+        if (Input.GetKey("w") || Input.GetKey("e") || Input.GetKey("q"))
+        {
+            y = yVal;
+            done += y;
+        }
+
+        if (Input.GetKey("x") || Input.GetKey("c") || Input.GetKey("z"))
+        {
+            y = -yVal;
+            done += y;
+        }
+
+        if (done != 0)
+        {
+            Debug.Log("BUTTON PRESSED FINALLY");
+            return done;
+        }
+        else return 0;
+    }
+
+    void Move(float done)
     {
         //allow movement upto max movements spaces or additional with fatigue
-        int amountMoved = 0;
-        Vector3 temp;
-        // Debug.Log("Moving " + moveLimit);
-        while (amountMoved < moveLimit)                                //while the amount moved is less than the limit implement following
-        {
-            GetMovement();
-            //Get direction values.
-            temp = new Vector3(x, y, 0);
-            this.gameObject.transform.Translate(temp);                  //move the gameObject that far
-            x = 0;                                                      //reset the movement variables
-            y = 0;
-            amountMoved++;                                              //increment the amount moved variable
-        }
+        Debug.Log("I GONNA MOVE");
+        int x, y;
+        y = (Convert.ToInt32(done)) % 10;
+        done /= 10;
+        x = Convert.ToInt32(done);
+
+        Vector3 temp = new Vector3(x, y, 0);                        //Get direction values
+        this.gameObject.transform.Translate(temp);                  //move the gameObject that far
+        x = 0;                                                      //reset the movement variables
+        y = 0;
     }
 
     protected void Skill()

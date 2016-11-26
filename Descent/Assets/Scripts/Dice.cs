@@ -19,7 +19,7 @@ public class Dice
         {
             RollRedDie();
         }
-        return miss;
+        return !miss;
     }
     public bool GetSurge()
     {
