@@ -30,13 +30,15 @@ public class Minion : Actions
     {
         _name = name;
         _noOfMinions = noOfMinions;
-        LoadMinions();
+    
     }
 
-    public void Start()
+    public void Awake()
     {
         MinionTypes thisMinion = MinionTypes.GoblinArchers;
         _name = thisMinion.ToString();
+        LoadMinions();
+        //instantiate children
     }
 
     public void LoadMinions()
