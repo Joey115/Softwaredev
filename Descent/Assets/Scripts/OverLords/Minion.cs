@@ -30,12 +30,13 @@ public class Minion : Actions
     {
         _name = name;
         _noOfMinions = noOfMinions;
-    
+
     }
 
-    public void Awake()
+    public void Start()
     {
         MinionTypes thisMinion = MinionTypes.GoblinArchers;
+        filePath = "URI=file:" + Application.dataPath + "Minions.s3db";
         _name = thisMinion.ToString();
         LoadMinions();
         //instantiate children

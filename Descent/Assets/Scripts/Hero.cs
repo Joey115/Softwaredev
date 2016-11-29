@@ -5,15 +5,6 @@ using System;
 
 public class Hero : Actions
 {
-
-    /*
-        4 classes(warrior, mage, healer, scout) + 2 subclasses(knight/beserker, necromancer/runemaster, 
-        thief/? , 
-
-        so select hero / select a class first? then allow them to choose their subclass
-
-    */
-
     //general stats variable if we can do inheritance + taken damage or fatigue functions
 
     int health, maxHealth, movement, fatigue = 0, maxFatigue, might, knowledge, willpower, awareness; //standard hero attritbutes
