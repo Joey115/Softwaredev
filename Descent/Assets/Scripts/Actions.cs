@@ -8,7 +8,7 @@ public abstract class Actions : MonoBehaviour
     //make the class an abstract class so that you cannot create an instance of this without it being on a child
     Dice theDie = new Dice();
     Vector3 move;
-    int addionalDie;
+    int addionalDie, actionse = 0;
     float xVal, yVal;
     bool actions = false;
 
@@ -47,25 +47,77 @@ public abstract class Actions : MonoBehaviour
 
     void Start()
     {
-        xVal = 1.06f;                       //distance between squares
-        yVal = 1.07f;
+        xVal = 15.1f;
+        yVal = 15.075f;
     }
 
     public void SetActions()
     {
         actions = true;
+        actionse++;
     }
 
     void Update()
     {
-        float temp = GetMovement();
-        if (actions && temp != 0)
+        //  float temp = GetMovement();
+        if (actions && (actionse > 0))
         {
-            Move(temp);
-            actions = false;
+            // Move(temp);
+            CharacterMovement();
         }
     }
 
+
+    void CharacterMovement()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            this.gameObject.transform.Translate(0, 0, -yVal);
+            actionse--;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            this.gameObject.transform.Translate(-xVal, 0, -yVal);
+            actionse--;
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            this.gameObject.gameObject.transform.Translate(-xVal, 0, 0);
+            actionse--;
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            this.gameObject.gameObject.transform.Translate(-xVal, 0, yVal);
+            actionse--;
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            this.gameObject.gameObject.transform.Translate(0, 0, yVal);
+            actionse--;
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            this.gameObject.gameObject.transform.Translate(xVal, 0, yVal);
+            actionse--;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            this.gameObject.gameObject.transform.Translate(xVal, 0, 0);
+            actionse--;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            this.gameObject.gameObject.transform.Translate(xVal, 0, -yVal);
+            actionse--;
+        }
+        if (actionse == 0)
+        {
+            actions = false;
+        }
+
+    }
+
+    /*
     float GetMovement()
     {
         float x, y, done = 0;
@@ -100,7 +152,6 @@ public abstract class Actions : MonoBehaviour
         }
         else return 0;
     }
-
     void Move(float done)
     {
         //allow movement upto max movements spaces or additional with fatigue
@@ -115,23 +166,21 @@ public abstract class Actions : MonoBehaviour
         x = 0;                                                      //reset the movement variables
         y = 0;
     }
+    */
 
     protected void Skill()
     {
 
     }
-
     protected void Search()
     {
         // gain a random item from the database search items
     }
-
     protected void StandUp()
     {
         //player can move
 
     }
-
     protected void Revive()
     {
         //target champion regains health

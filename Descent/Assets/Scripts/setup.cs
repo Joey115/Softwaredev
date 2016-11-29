@@ -19,7 +19,7 @@ public class setup : MonoBehaviour
     bool[] available = new bool[4];
     // public Hero Players;
     string filePath;
-    int count = 1;
+    int count = 0;
 
     public void OnOption2Select()
     {
@@ -161,7 +161,7 @@ public class setup : MonoBehaviour
         string sub, info;
         Debug.Log("Healer Selected");
         available[1] = true;
-       // Debug.Log("removed Healer");
+        // Debug.Log("removed Healer");
         if (option == true)
         {
             sub = "SpiritSeaker";
@@ -189,7 +189,7 @@ public class setup : MonoBehaviour
         string sub, info;
         Debug.Log("Mage Selected");
         available[2] = true;
-       // Debug.Log("removed Mage");
+        // Debug.Log("removed Mage");
         if (option == true)
         {
             sub = "Runemaster";
@@ -217,7 +217,7 @@ public class setup : MonoBehaviour
     {
         string sub, info;
         Debug.Log("Scout Selected");
-       // Debug.Log("removed Scout");
+        // Debug.Log("removed Scout");
         available[3] = true;
         if (option == true)
         {

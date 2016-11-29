@@ -8,6 +8,8 @@ public class Minion : Actions
 {
     string _name, filePath;
     int _noOfMinions, _defence, _health, _movement, extraAttck;
+    bool master = true;
+    GameObject miniOne;
 
     enum MinionTypes
     {
@@ -37,9 +39,14 @@ public class Minion : Actions
     {
         MinionTypes thisMinion = MinionTypes.GoblinArchers;
         filePath = "URI=file:" + Application.dataPath + "Minions.s3db";
+        miniOne = this.gameObject;
         _name = thisMinion.ToString();
         LoadMinions();
         //instantiate children
+        for (int i = 0; i <= _noOfMinions; i++)
+        {
+            //Instantiate(miniOne);                 //need a way of setting children so0
+        }
     }
 
     public void LoadMinions()
