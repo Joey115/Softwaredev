@@ -47,8 +47,8 @@ public abstract class Actions : MonoBehaviour
 
     void Start()
     {
-        xVal = 15.1f;
-        yVal = 15.075f;
+        xVal = 60.4f;
+        yVal = 60.3f;
     }
 
     public void SetActions()

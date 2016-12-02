@@ -12,7 +12,10 @@ public class Game : MonoBehaviour
     int actionsLeft = 2, moveTemp, moveTaken;
     public Dropdown drop;
 
-
+    public int GetPlayerTurnNo()
+    {
+        return playerTurnNo;
+    }
 
     int playerTurnNo = 0;
 
@@ -125,7 +128,8 @@ public class Game : MonoBehaviour
         {
             case 1:
                 Debug.Log("Atttcking");                                 //get the minion being attacked
-                players[playerTurnNo].Attack();
+
+
                 break;
             case 2:
                 action = true;
