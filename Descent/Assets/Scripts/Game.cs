@@ -11,7 +11,6 @@ public class Game : MonoBehaviour
     bool updated = true, action = false;
     int actionsLeft = 2, moveTemp, moveTaken;
     public Dropdown drop;
-    IEnumerator FLUP;
 
 
 
@@ -43,7 +42,7 @@ public class Game : MonoBehaviour
         }
         if (currentGameState == GameState.overlordTurn)
         {
-
+            UpdateOverLoadUI();
         }
         if (action)
         {
@@ -58,10 +57,15 @@ public class Game : MonoBehaviour
     }
     public void EndTurn()
     {
-        if (playerTurnNo >= 3)
+        if (currentGameState == GameState.overlordTurn)
+        {
+            currentGameState = GameState.playerTurn;
+        }
+        else if (playerTurnNo >= 3)
         {
             //playerTurnNo = 0;
             currentGameState = GameState.overlordTurn;
+            playerTurnNo = 0;
         }
         else
         {
@@ -82,6 +86,14 @@ public class Game : MonoBehaviour
     public void SetupComplete()
     {
         currentGameState = GameState.playerTurn;
+    }
+
+    void UpdateOverLoadUI()
+    {
+        nameText.text = "OVERLord turn";
+        healthText.text = "Blah";
+        movementText.text = "hehe";
+        fatigueText.text = "Samjeboi";
     }
 
     void UpdateUIPlayer()
@@ -112,8 +124,8 @@ public class Game : MonoBehaviour
         switch (value)
         {
             case 1:
+                Debug.Log("Atttcking");                                 //get the minion being attacked
                 players[playerTurnNo].Attack();
-                Debug.Log("Atttcking");
                 break;
             case 2:
                 action = true;

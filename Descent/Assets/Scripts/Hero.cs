@@ -120,4 +120,9 @@ public class Hero : Actions
     {
         health -= damage;
     }
+
+    int additional()
+    {
+        return 0;
+    }
 }

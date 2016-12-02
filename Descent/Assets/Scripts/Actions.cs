@@ -11,6 +11,7 @@ public abstract class Actions : MonoBehaviour
     int addionalDie, actionse = 0;
     float xVal, yVal;
     bool actions = false;
+    public GameObject dave;
 
 
     public abstract void Damaged(int damage);
@@ -19,11 +20,10 @@ public abstract class Actions : MonoBehaviour
     {
         bool didHit, surge, extra;                          // , ranged;
         int range, damage, die = 0, defence = 0, temp = 0;
-        //get dice
         // send 0 for no additional dice, 1 yellow, 2 red
-        //die = this.additional
+        // die = this.additional();
         didHit = theDie.GetHit(die);
-        //temp = Minion.GetDefence();
+        //temp = bro.GetDefence();
 
         if (didHit == true)
         {
@@ -37,10 +37,10 @@ public abstract class Actions : MonoBehaviour
 
             defence = theDie.RollDefenceDie(temp);
             damage -= defence;
-            //minion.damaged();
+            //bro.Damaged(damage);
             if (damage <= 0)
             {
-                //damage blocked
+                Debug.Log("DAMAGE blocked! " + damage);
             }
         }
     }
@@ -72,42 +72,42 @@ public abstract class Actions : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            this.gameObject.transform.Translate(0, 0, -yVal);
+            dave.transform.Translate(0, 0, -yVal);
             actionse--;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            this.gameObject.transform.Translate(-xVal, 0, -yVal);
+            dave.transform.Translate(-xVal, 0, -yVal);
             actionse--;
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            this.gameObject.gameObject.transform.Translate(-xVal, 0, 0);
+            dave.gameObject.transform.Translate(-xVal, 0, 0);
             actionse--;
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            this.gameObject.gameObject.transform.Translate(-xVal, 0, yVal);
+            dave.transform.Translate(-xVal, 0, yVal);
             actionse--;
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            this.gameObject.gameObject.transform.Translate(0, 0, yVal);
+            dave.transform.Translate(0, 0, yVal);
             actionse--;
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            this.gameObject.gameObject.transform.Translate(xVal, 0, yVal);
+            dave.transform.Translate(xVal, 0, yVal);
             actionse--;
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            this.gameObject.gameObject.transform.Translate(xVal, 0, 0);
+            dave.transform.Translate(xVal, 0, 0);
             actionse--;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            this.gameObject.gameObject.transform.Translate(xVal, 0, -yVal);
+            dave.transform.Translate(xVal, 0, -yVal);
             actionse--;
         }
         if (actionse == 0)

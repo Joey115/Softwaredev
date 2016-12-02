@@ -6,10 +6,9 @@ using System;
 
 public class Minion : Actions
 {
-    string _name, filePath;
-    int _noOfMinions, _defence, _health, _movement, extraAttck;
-    bool master = true;
-    GameObject miniOne;
+    protected string _name, filePath;
+    protected int _noOfMinions, _defence, _health, _movement, extraAttck;
+    protected bool master = false;
 
     enum MinionTypes
     {
@@ -27,31 +26,24 @@ public class Minion : Actions
     public override void Damaged(int temp)
     {
         _health -= temp;
-    }
-    public Minion(string name, int noOfMinions)
-    {
-        _name = name;
-        _noOfMinions = noOfMinions;
-
+        if (_health <= 0)
+        {
+            Destroy(this);
+        }
     }
 
     public void Start()
     {
         MinionTypes thisMinion = MinionTypes.GoblinArchers;
         filePath = "URI=file:" + Application.dataPath + "Minions.s3db";
-        miniOne = this.gameObject;
         _name = thisMinion.ToString();
         LoadMinions();
         //instantiate children
-        for (int i = 0; i <= _noOfMinions; i++)
-        {
-            //Instantiate(miniOne);                 //need a way of setting children so0
-        }
     }
 
-    public void LoadMinions()
+    void LoadMinions()
     {
-        using (IDbConnection connection = new SqliteConnection(filePath))                           //REWRITE TO DO THE CORRECT WAY ROUND - ARSE
+        using (IDbConnection connection = new SqliteConnection(filePath))
         {
             connection.Open();
             string commandText = "SELECT * FROM Minions WHERE name='" + _name + "'";

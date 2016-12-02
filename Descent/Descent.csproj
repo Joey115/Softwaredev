@@ -72,11 +72,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scenes\Main menu scenes (theory)\LukeMenuTest.cs" />
     <Compile Include="Assets\Scripts\Actions.cs" />
     <Compile Include="Assets\Scripts\Dice.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
     <Compile Include="Assets\Scripts\LoadHero.cs" />
+    <Compile Include="Assets\Scripts\MouseOverAttack.cs" />
+    <Compile Include="Assets\Scripts\OverLords\Goblin.cs" />
     <Compile Include="Assets\Scripts\OverLords\Minion.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\setup.cs" />

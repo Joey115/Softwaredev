@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Main menu scenes (theory)/Select subclass Warrior.unity
+- path: Assets/Scenes/Encounter_1.unity
   isLoaded: 1
   isActive: 1
