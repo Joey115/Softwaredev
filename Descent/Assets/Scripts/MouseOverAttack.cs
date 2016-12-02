@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 
 public class MouseOverAttack : MonoBehaviour
 {
@@ -14,8 +12,8 @@ public class MouseOverAttack : MonoBehaviour
 
     void OnMouseEnter()
     {
-        playerTurn = Game.GetPlayerTurnNo();
-        players[playerTurn].Attack();
+        playerTurn = GameObject.Find("Board").GetComponent<Game>().GetPlayerTurnNo();
+        //players[playerTurn].Attack();
     }
 
     // Update is called once per frame

@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-using System;
-using System.Collections;
 
 public abstract class Actions : MonoBehaviour
 {
     //make the class an abstract class so that you cannot create an instance of this without it being on a child
     Dice theDie = new Dice();
-    Vector3 move;
     int addionalDie, actionse = 0;
     float xVal, yVal;
     bool actions = false;
     public GameObject dave;
+    PlayerMovement Move = new PlayerMovement();
 
 
     public abstract void Damaged(int damage);
@@ -49,6 +46,8 @@ public abstract class Actions : MonoBehaviour
     {
         xVal = 60.4f;
         yVal = 60.3f;
+
+
     }
 
     public void SetActions()
@@ -62,12 +61,16 @@ public abstract class Actions : MonoBehaviour
         //  float temp = GetMovement();
         if (actions && (actionse > 0))
         {
-            // Move(temp);
-            CharacterMovement();
+            Move.MovementSelected();
         }
     }
 
+    public int Actionse(int value)
+    {
+        actionse -= value;
+    }
 
+    /*
     void CharacterMovement()
     {
         if (Input.GetKeyDown(KeyCode.W))
@@ -117,7 +120,7 @@ public abstract class Actions : MonoBehaviour
 
     }
 
-    /*
+    
     float GetMovement()
     {
         float x, y, done = 0;

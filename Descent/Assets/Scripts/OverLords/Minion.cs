@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Mono.Data.SqliteClient;
 using System.Data;
 using System;
@@ -7,7 +6,7 @@ using System;
 public class Minion : Actions
 {
     protected string _name, filePath;
-    protected int _noOfMinions, _defence, _health, _movement, extraAttck;
+    protected int _noOfMinions, _defence, _health, _masterHealth, _movement, extraAttck;
     protected bool master = false;
 
     enum MinionTypes
@@ -25,10 +24,21 @@ public class Minion : Actions
 
     public override void Damaged(int temp)
     {
-        _health -= temp;
-        if (_health <= 0)
+        if (master == false)
         {
-            Destroy(this);
+            _health -= temp;
+            if (_health <= 0)
+            {
+                Destroy(this);
+            }
+        }
+        else
+        {
+            _masterHealth -= temp;
+            if (_masterHealth <= 0)
+            {
+                Destroy(this);
+            }
         }
     }
 
@@ -54,6 +64,7 @@ public class Minion : Actions
             {
                 _noOfMinions = Convert.ToInt32(reader.GetValue(1));
                 _health = Convert.ToInt32(reader.GetValue(2));
+                _masterHealth = Convert.ToInt32(reader.GetValue(3));
                 _movement = Convert.ToInt32(reader.GetValue(4));
                 _defence = Convert.ToInt32(reader.GetValue(5));
                 extraAttck = Convert.ToInt32(reader.GetValue(6));

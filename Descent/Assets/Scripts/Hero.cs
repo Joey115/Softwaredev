@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Data;
-using System;
 
 
 public class Hero : Actions
