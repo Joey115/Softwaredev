@@ -138,9 +138,9 @@ public class Dice
 
         if (dieCase == 0)
         {
-            lowLimit = 0;
-            highLimit = 2;
-            common = 1;
+            lowLimit = 1;
+            highLimit = 4;
+            common = 2;
         }
         else if (dieCase == 1)
         {
@@ -148,11 +148,11 @@ public class Dice
             highLimit = 3;
             common = 0;
         }
-        else
+        else                    //so default
         {
-            lowLimit = 1;
-            highLimit = 4;
-            common = 2;
+            lowLimit = 0;
+            highLimit = 2;
+            common = 1;
         }
 
         defenceVal = RollDice();

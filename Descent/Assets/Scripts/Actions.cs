@@ -68,6 +68,7 @@ public abstract class Actions : MonoBehaviour
     public int Actionse(int value)
     {
         actionse -= value;
+        return 0;
     }
 
     /*
