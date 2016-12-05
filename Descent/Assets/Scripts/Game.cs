@@ -50,8 +50,8 @@ public class Game : MonoBehaviour
         {
             while (moveTaken < moveTemp)
             {
-                players[playerTurnNo].SetActions();
-                moveTaken++;
+                players[playerTurnNo].SetActions(moveTemp);
+                //moveTaken++;
             }
             action = false;
             moveTaken = 0;

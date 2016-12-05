@@ -4,7 +4,7 @@ public abstract class Actions : MonoBehaviour
 {
     //make the class an abstract class so that you cannot create an instance of this without it being on a child
     Dice theDie = new Dice();
-    int addionalDie, actionse = 0;
+    int addionalDie, actionse = 0, move;
     float xVal, yVal;
     bool actions = false;
     public GameObject dave;
@@ -50,25 +50,19 @@ public abstract class Actions : MonoBehaviour
 
     }
 
-    public void SetActions()
+    public void SetActions(int moveTemp)
     {
         actions = true;
-        actionse++;
+        move = moveTemp;
     }
 
     void Update()
     {
         //  float temp = GetMovement();
-        if (actions && (actionse > 0))
+        if (actions)
         {
-            Move.MovementSelected();
+            Move.MovementSelected(move);
         }
-    }
-
-    public int Actionse(int value)
-    {
-        actionse -= value;
-        return 0;
     }
 
     /*
