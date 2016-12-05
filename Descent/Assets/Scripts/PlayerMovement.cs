@@ -7,23 +7,17 @@ public class PlayerMovement : MonoBehaviour
     //delegate int Actiononi(int val);
     //Actiononi setActionse = new Actiononi(Actionse);
     bool complete = false;
-    int move = 0;
-
-    [SerializeField]
-    int playerTurnNumber;
-
-    int playerNumber;
-
+    int move = 0, playerTurnNumber, playerNumber;
     GameObject playerObject;
 
     void Start()
     {
-        Debug.Log(playerTurnNumber);
+       // Debug.Log(playerTurnNumber);
     }
 
     void Update()
     {
-        playerNumber = GameObject.Find("Board").GetComponent<Game>().GetPlayerTurnNo();
+        playerTurnNumber = GameObject.Find("Board").GetComponent<Game>().GetPlayerTurnNo();
         if (move > 0)
         {
             CharacterMovement();

@@ -8,7 +8,7 @@ public class Game : MonoBehaviour
     public Hero[] players = new Hero[4];
     // public Shader icon;
     bool updated = true, action = false;
-    int actionsLeft = 2, moveTemp, moveTaken;
+    int actionsLeft = 2, moveTemp;
     public Dropdown drop;
 
     public int GetPlayerTurnNo()
@@ -48,13 +48,9 @@ public class Game : MonoBehaviour
         }
         if (action)
         {
-            while (moveTaken < moveTemp)
-            {
-                players[playerTurnNo].SetActions(moveTemp);
-                //moveTaken++;
-            }
+            players[playerTurnNo].SetActions(moveTemp);
+
             action = false;
-            moveTaken = 0;
         }
     }
     public void EndTurn()
@@ -80,6 +76,7 @@ public class Game : MonoBehaviour
 
     void PlayerTurn()
     {
+        actionsLeft = 2;
         UpdateUIPlayer();
         drop.interactable = true;
         //refreshCards();
@@ -95,7 +92,7 @@ public class Game : MonoBehaviour
         nameText.text = "OVERLord turn";
         healthText.text = "Blah";
         movementText.text = "hehe";
-        fatigueText.text = "Samjeboi";
+        fatigueText.text = "workz";
     }
 
     void UpdateUIPlayer()
@@ -127,8 +124,7 @@ public class Game : MonoBehaviour
         {
             case 1:
                 Debug.Log("Atttcking");                                 //get the minion being attacked
-
-
+                //players[playerTurnNo];
                 break;
             case 2:
                 action = true;
@@ -146,7 +142,6 @@ public class Game : MonoBehaviour
         {
             drop.interactable = false;
             EndTurn();
-
         }
     }
 

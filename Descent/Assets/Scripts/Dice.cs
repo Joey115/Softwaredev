@@ -6,8 +6,6 @@ public class Dice
     int range, damage;
     bool miss = false, surge = false, extra = false;
 
-    public Dice() { }
-
     public bool GetHit(int extraDie)
     {
         RollBlueDice();
