@@ -72,6 +72,7 @@ public class Hero : Actions
         SetupHeros();
         health = maxHealth;
         Debug.Log(heroName);
+        Move = new PlayerMovement(this.gameObject, this, playerNumber);
     }
 
     bool check = false;

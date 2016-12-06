@@ -8,7 +8,7 @@ public abstract class Actions : MonoBehaviour
     float xVal, yVal;
     bool actions = false;
     public GameObject dave;
-    PlayerMovement Move = new PlayerMovement();
+    protected PlayerMovement Move;
 
 
     public abstract void Damaged(int damage);
@@ -46,8 +46,6 @@ public abstract class Actions : MonoBehaviour
     {
         xVal = 60.4f;
         yVal = 60.3f;
-
-
     }
 
     public void SetActions(int moveTemp)
@@ -56,12 +54,18 @@ public abstract class Actions : MonoBehaviour
         move = moveTemp;
     }
 
+    public void UnsetActions()
+    {
+        actions = false;
+    }
+
     void Update()
     {
         //  float temp = GetMovement();
         if (actions)
         {
             Move.MovementSelected(move);
+            actions = false;
         }
     }
 
