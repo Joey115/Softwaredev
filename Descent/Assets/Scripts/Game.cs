@@ -48,8 +48,7 @@ public class Game : MonoBehaviour
         }
         if (action)
         {
-            players[playerTurnNo].SetActions(moveTemp);
-
+            players[playerTurnNo].SetActions(moveTemp, playerTurnNo);
             action = false;
         }
     }
@@ -133,6 +132,9 @@ public class Game : MonoBehaviour
                 break;
             case 3:
                 players[playerTurnNo].Rest();
+                break;
+            case 4:
+                Debug.Log("HAHA YOU DROPPED NOTHING :D");
                 break;
             default:
                 Debug.Log("It's fucked / doing another actions that isnt' defined yet :3 ");

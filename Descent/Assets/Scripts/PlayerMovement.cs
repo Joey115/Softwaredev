@@ -2,87 +2,98 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    float xVal = 15.1f;
-    float yVal = 15.075f;
+    float xVal = 50.5f;
+    float yVal = 50.5f;
     //delegate int Actiononi(int val);
     //Actiononi setActionse = new Actiononi(Actionse);
     //bool complete = false;
-    int move = 0, playerTurnNumber, thisPlayerNo;
+    int move = 0, playerTurnNumber = 0, thisPlayerNo = 0;
     public GameObject players;
-    public Hero hero;
 
-    public PlayerMovement(GameObject temp1, Hero temp2, int temp3)
+    void Start()
     {
-        players = temp1;
-        hero = temp2;
-        thisPlayerNo = temp3;
+        players = this.gameObject;
+        SetPlayerNo();
     }
 
-    /*
     void Update()
     {
-        playerTurnNumber = GetComponentInParent<Game>().GetPlayerTurnNo();
-        if (move > 0 && playerTurnNumber == thisPlayerNo)
+        if (playerTurnNumber == thisPlayerNo)
         {
             CharacterMovement();
         }
-        if (move <= 0)
-        {
-            hero.UnsetActions();
-        }
-    }   */
+    }
 
-
-    public void MovementSelected(int moveTemp)
+    void SetPlayerNo()
     {
-        move = moveTemp;
-        while (move > 0)
+        switch (this.gameObject.name)
         {
-            if (playerTurnNumber == thisPlayerNo)
-            {
-                CharacterMovement();
-            }
+            case "Player1":
+                thisPlayerNo = 0;
+                break;
+            case "Player2":
+                thisPlayerNo = 1;
+                break;
+            case "Player3":
+                thisPlayerNo = 2;
+                break;
+            case "Player4":
+                thisPlayerNo = 3;
+                break;
+            default:
+                Debug.Log("well shit");
+                break;
+        }
+    }
+
+    public void MovementSelected(int moveTemp, int playerNo)
+    {
+        playerTurnNumber = playerNo;
+        move = moveTemp;
+        if (playerTurnNumber == thisPlayerNo)
+        {
+            CharacterMovement();
         }
     }
 
     void CharacterMovement()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && move > 0)
         {
             players.gameObject.transform.Translate(0, 0, -yVal);
             move--;
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && move > 0)
         {
             players.gameObject.transform.Translate(-xVal, 0, -yVal);
             move--;
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && move > 0)
         {
             players.gameObject.transform.Translate(-xVal, 0, 0);
             move--;
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && move > 0)
         {
             players.gameObject.transform.Translate(-xVal, 0, yVal);
             move--;
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && move > 0)
         {
             players.gameObject.transform.Translate(0, 0, yVal);
             move--;
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && move > 0)
         {
             players.gameObject.transform.Translate(xVal, 0, yVal);
             move--;
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && move > 0)
         {
             players.gameObject.transform.Translate(xVal, 0, 0);
             move--;
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && move > 0)
         {
             players.gameObject.transform.Translate(xVal, 0, -yVal);
             move--;
