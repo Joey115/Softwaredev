@@ -7,6 +7,7 @@ public class Hero : Actions
 
     int health, maxHealth, movement, fatigue = 0, maxFatigue, might, knowledge, willpower, awareness; //standard hero attritbutes
     int playerNumber;
+    bool check = false;
     public Game game;
     public LoadHero load;
     public string heroName, heroClass, heroSub;
@@ -75,7 +76,6 @@ public class Hero : Actions
         Move = GetComponent<PlayerMovement>();
     }
 
-    bool check = false;
     void LateUpdate()
     {
         if (game != null && check == false)

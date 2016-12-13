@@ -50,10 +50,6 @@ public class PlayerMovement : MonoBehaviour
     {
         playerTurnNumber = playerNo;
         move = moveTemp;
-        if (playerTurnNumber == thisPlayerNo)
-        {
-            CharacterMovement();
-        }
     }
 
     void CharacterMovement()

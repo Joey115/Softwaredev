@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
     public Text nameText, healthText, fatigueText, movementText;
     public Hero[] players = new Hero[4];
     // public Shader icon;
-    bool updated = true, action = false;
+    bool updated = true;
     int actionsLeft = 2, moveTemp;
     public Dropdown drop;
 
@@ -46,11 +46,6 @@ public class Game : MonoBehaviour
         {
             UpdateOverLoadUI();
         }
-        if (action)
-        {
-            players[playerTurnNo].SetActions(moveTemp, playerTurnNo);
-            action = false;
-        }
     }
     public void EndTurn()
     {
@@ -60,7 +55,6 @@ public class Game : MonoBehaviour
         }
         else if (playerTurnNo >= 3)
         {
-            //playerTurnNo = 0;
             currentGameState = GameState.overlordTurn;
             playerTurnNo = 0;
         }
@@ -122,13 +116,13 @@ public class Game : MonoBehaviour
         switch (value)
         {
             case 1:
-                Debug.Log("Atttcking");                                 //get the minion being attacked
-                //players[playerTurnNo];
+                Debug.Log("Atttcking");                
+                //get the minion being attacked
+                players[playerTurnNo].Attack();
                 break;
             case 2:
-                action = true;
+                players[playerTurnNo].SetActions(moveTemp, playerTurnNo);
                 Debug.Log("MOVE PLS YOU ARSE");
-                // players[playerTurnNo].Move(moveTemp);
                 break;
             case 3:
                 players[playerTurnNo].Rest();
@@ -137,7 +131,7 @@ public class Game : MonoBehaviour
                 Debug.Log("HAHA YOU DROPPED NOTHING :D");
                 break;
             default:
-                Debug.Log("It's fucked / doing another actions that isnt' defined yet :3 ");
+                Debug.Log("It's fucked / that action isnt' defined yet :3 ");
                 break;
         }
         if (actionsLeft <= 0)

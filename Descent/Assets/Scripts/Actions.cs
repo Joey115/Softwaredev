@@ -5,9 +5,7 @@ public abstract class Actions : MonoBehaviour
     //make the class an abstract class so that you cannot create an instance of this without it being on a child
     Dice theDie = new Dice();
     int addionalDie, playerTurnNo, actionse = 0, move;
-    float xVal, yVal;
     bool actions = false;
-    public GameObject dave;
     protected PlayerMovement Move;
 
 
@@ -17,6 +15,9 @@ public abstract class Actions : MonoBehaviour
     {
         bool didHit, surge, extra;                          // , ranged;
         int range, damage, die = 0, defence = 0, temp = 0;
+
+        //FindObjectWithTag < "goblin" > ();
+
         // send 0 for no additional dice, 1 yellow, 2 red
         // die = this.additional();
         didHit = theDie.GetHit(die);
@@ -34,18 +35,16 @@ public abstract class Actions : MonoBehaviour
 
             defence = theDie.RollDefenceDie(temp);
             damage -= defence;
+            if (damage < 0)
+            {
+                damage = 0;
+            }
             //bro.Damaged(damage);
             if (damage <= 0)
             {
                 Debug.Log("DAMAGE blocked! " + damage);
             }
         }
-    }
-
-    void Start()
-    {
-        xVal = 60.4f;
-        yVal = 60.3f;
     }
 
     public void SetActions(int moveTemp, int playerNo)
@@ -56,7 +55,6 @@ public abstract class Actions : MonoBehaviour
     }
     void Update()
     {
-        //  float temp = GetMovement();
         if (actions)
         {
             Move.MovementSelected(move, playerTurnNo);
